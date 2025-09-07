@@ -65,7 +65,7 @@ git push origin your-branch-name
 
 ## コミットメッセージ規則
 
-- `feat`: 新機能の追加
-- `update`: 既存機能の更新
-- `delete`: 機能の削除
-- `fix`: バグ修正
+- `feature: 追加した機能の概要#issue番号`
+- `update: 更新した機能の概要#issue番号`
+- `delete: 削除した機能の概要#issue番号`
+- `fix: 修正した内容の概要#issue番号` 
