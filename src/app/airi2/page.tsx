@@ -2,12 +2,15 @@ import Image from "next/image";
 import styles from "./page.module.css";
 import Button from "@/component/Button";
 import {Swords} from 'lucide-react';
+import Quest from "@/component/Quest";
 
 export default function Home() {
   return (
     <div className={styles.page}>
       <main className={styles.main}>
         <Button color="#d399abff" icon={<Swords></Swords>} link="/">クエストに挑戦</Button>
+        <Quest color="white" theme="未来の給食メニューを考えよう" people="栄養士　○○さん" link="/"></Quest> 
+
         <Image
           className={styles.logo}
           src="/next.svg"
