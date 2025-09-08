@@ -1,0 +1,31 @@
+.quest {
+  height: 100px;
+  width: 700px;
+  border-radius: 15px;
+  border: gray solid;
+  display: flex;
+  justify-content: space-around;
+}
+
+.theme {
+  color: black;
+}
+
+.people {
+  color: black;
+  padding-top: 10px;
+}
+
+.link {
+  color: blue;
+  text-align: right;
+  display: flex;
+  align-items: center;
+}
+
+.arrow {
+}
+
+.infomation {
+  padding-left: 10px;
+}
