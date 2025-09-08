@@ -1,12 +1,13 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 import Button from "@/component/Button";
+import {Swords} from 'lucide-react';
 
 export default function Home() {
   return (
     <div className={styles.page}>
       <main className={styles.main}>
-        <Button children={"airi"} />
+        <Button color="#d399abff" icon={<Swords></Swords>} link="/">クエストに挑戦</Button>
         <Image
           className={styles.logo}
           src="/next.svg"

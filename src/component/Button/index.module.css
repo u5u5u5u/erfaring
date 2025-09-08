@@ -1,0 +1,26 @@
+.moji{
+    color: white;
+    font-size: 30px;
+    
+}
+.icon{
+    padding-right: 10px;
+    padding-top: 10px;
+    color: white;
+    
+    
+}
+.arrow{
+    padding-left: 30px;
+    padding-top: 10px;
+    color:white;
+}
+.button{
+    width: 400px;
+    height: 100px;
+    border-color: white;
+    border-radius: 15px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
