@@ -1,0 +1,111 @@
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  background-color: white;
+  border-right: 1px solid #e2e8f0;
+  transition: width 0.3s ease;
+  z-index: 1000;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+}
+
+.sidebar.open {
+  width: 240px;
+}
+
+.sidebar.closed {
+  width: 80px;
+}
+
+.header {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+  padding: 16px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.sidebar.closed .header {
+  justify-content: center;
+}
+
+.userIcon {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background-color: #cdd2d9;
+}
+
+.toggleButton {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 6px;
+  color: #718096;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toggleButton:hover {
+  background-color: #f7fafc;
+  color: #2d3748;
+}
+
+.menuContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px;
+}
+
+.menuLink {
+  text-decoration: none;
+  color: inherit;
+}
+
+.menuItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #718096;
+  background-color: transparent;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.menuItem:hover {
+  background-color: #f7fafc;
+  color: #2d3748;
+}
+
+.menuItem.active {
+  background-color: #dbe9fe;
+  color: #2463eb;
+  font-weight: 600;
+}
+
+.menuItem.active:hover {
+  background-color: #c7ddfe;
+  color: #1d4ed8;
+}
+
+.icon {
+  flex-shrink: 0;
+}
+
+.menuText {
+  font-size: 14px;
+  font-weight: 500;
+}
