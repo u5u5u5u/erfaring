@@ -27,7 +27,6 @@ const AppLayout = ({ children }: AppLayoutProps) => {
     localStorage.setItem("sidebarOpen", JSON.stringify(newState));
   };
 
-  // 初期化が完了するまでは、デフォルト状態で表示（フラッシュを防ぐ）
   if (isSidebarOpen === null) {
     return (
       <div style={{ display: "flex", minHeight: "100vh" }}>
