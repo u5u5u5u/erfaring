@@ -27,12 +27,12 @@ const Sidebar = ({ isOpen, userIconUrl, onToggle }: SidebarProps) => {
     {
       name: "ホーム",
       icon: Home,
-      href: "/",
+      href: "/home",
     },
     {
       name: "探究ノート",
       icon: BookOpen,
-      href: "/notes",
+      href: "/question",
     },
     {
       name: "クエスト",
