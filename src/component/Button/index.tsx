@@ -12,10 +12,10 @@ interface ButtonProps {
 }
 
 const Button = ({children, color, icon, link}: ButtonProps) => {
-    return <a><button className={styles.button} style={{backgroundColor: color}}>
+    return <a className={styles.button} style={{backgroundColor: color}} href={link}>
     <div className={styles.icon}>{icon}</div>
     <div className={styles.moji}>{children}</div>
     <div className={styles.arrow}><ChevronRight size={30}></ChevronRight></div>
-    </button></a>
+    </a>
 };
 export default Button;
