@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <div className={styles.page}>
       <main className={styles.main}>
-        <Button color="#d399abff" icon={<Swords size={35}></Swords>}>クエストに挑戦</Button>
+        <a href="http://localhost:3001"><Button color="#d399abff" icon={<Swords></Swords>}>クエストに挑戦</Button></a>
         <Image
           className={styles.logo}
           src="/next.svg"
