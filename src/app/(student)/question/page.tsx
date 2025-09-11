@@ -1,9 +1,9 @@
 "use client";
 
-import AddQuestionButton from "@/component/AddQuestionButton";
+import AddQuestionButton from "@/components/AddQuestionButton";
 import styles from "./page.module.css";
 import type { Question } from "@/types/question";
-import Quest from "@/component/Quest";
+import Quest from "@/components/Quest";
 
 export default function QuestionPage() {
   const dummyQuestions: Question[] = [
