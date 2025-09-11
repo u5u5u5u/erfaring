@@ -1,17 +1,15 @@
-import React from "react";
-import { isContext } from "vm";
-import styles from "./index.module.css";
 import { ChevronRight } from "lucide-react";
-import { useSelectedLayoutSegments } from "next/navigation";
+import React from "react";
+import styles from "./index.module.css";
 
-interface ButtonProps {
+interface QuestProps {
   theme?: React.ReactNode;
   people?: React.ReactNode;
   color?: string;
   link?: string;
 }
 
-const Quest = ({ color, theme, people, link }: ButtonProps) => {
+const Quest = ({ color, theme, people, link }: QuestProps) => {
   return (
     <div className={styles.quest} style={{ backgroundColor: color }}>
       <div className={styles.infomation}>
