@@ -1,7 +1,6 @@
-import React from "react";
-import { isContext } from "vm";
-import styles from "./index.module.css";
 import { ChevronRight } from "lucide-react";
+import React from "react";
+import styles from "./index.module.css";
 
 interface ButtonProps {
   children: React.ReactNode;

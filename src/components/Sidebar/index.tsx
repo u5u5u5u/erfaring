@@ -1,18 +1,18 @@
 "use client";
 
 import {
-  Home,
   BookOpen,
+  ChevronLeft,
+  ChevronRight,
+  Home,
   Swords,
   User,
   UserRound,
-  ChevronLeft,
-  ChevronRight,
 } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import styles from "./index.module.css";
-import Image from "next/image";
 
 interface SidebarProps {
   isOpen: boolean;
