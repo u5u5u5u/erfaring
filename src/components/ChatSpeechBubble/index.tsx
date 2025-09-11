@@ -1,0 +1,20 @@
+import { ChevronRight } from "lucide-react";
+import React from "react";
+import styles from "./index.module.css";
+import Image from "next/image";
+
+interface ChatSpeechBubbleProps {
+  text?: string;
+  time?: string;
+}
+
+const ChatSpeechBubble = ({ text, time }: ChatSpeechBubbleProps) => {
+  return (
+    <div className={styles.speechbubble}>
+      <h1>{text}</h1>
+      <p>{time}</p>
+    </div>
+  );
+};
+
+export default ChatSpeechBubble;
