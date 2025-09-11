@@ -3,6 +3,9 @@ import styles from "./page.module.css";
 import Button from "@/components/Button";
 import {Swords} from 'lucide-react';
 import Quest from "@/components/Quest";
+import ChatIcon from "@/components/ChatIcon";
+import ChatSpeechBubble from "@/components/ChatSpeechBubble";
+import Chatitem from "@/components/chatitem";
 
 export default function Home() {
   return (
