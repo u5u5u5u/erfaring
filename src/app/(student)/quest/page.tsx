@@ -1,5 +1,5 @@
-import type quest from "@/types/quest";
-import Quest from "@/component/Quest";
+import type { quest } from "@/types/quest";
+import Quest from "@/components/Quest";
 import { userAgent } from "next/server";
 import styles from "./page.module.css";
 

@@ -1,8 +1,8 @@
 import Image from "next/image";
 import styles from "./page.module.css";
-import Button from "@/component/Button";
+import Button from "@/components/Button";
 import {Swords} from 'lucide-react';
-import Quest from "@/component/Quest";
+import Quest from "@/components/Quest";
 
 export default function Home() {
   return (
