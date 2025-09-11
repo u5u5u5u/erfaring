@@ -1,16 +1,38 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 import Button from "@/component/Button";
-import {Swords} from 'lucide-react';
+import { Swords } from "lucide-react";
 import Quest from "@/component/Quest";
+import ChatIcon from "@/component/ChatIcon";
+import ChatSpeechBubble from "@/component/ChatSpeechBubble";
+import Chatitem from "@/component/chatitem";
 
 export default function Home() {
   return (
     <div className={styles.page}>
       <main className={styles.main}>
-        <Button color="#d399abff" icon={<Swords></Swords>} link="/">クエストに挑戦</Button>
-        <Quest color="white" theme="未来の給食メニューを考えよう" people="栄養士　○○さん" link="/"></Quest> 
+        <Button color="#d399abff" icon={<Swords></Swords>} link="/">
+          クエストに挑戦
+        </Button>
+        <Quest
+          color="white"
+          theme="未来の給食メニューを考えよう"
+          people="栄養士　○○さん"
+          link="/"
+        ></Quest>
+        <ChatIcon icon="/globe.svg" name="airi"></ChatIcon>
 
+        <ChatSpeechBubble
+          text="カブトムシを拾ってきたよ"
+          time="2025年9月10日11:51"
+        ></ChatSpeechBubble>
+
+        <Chatitem
+          icon="globe.svg"
+          name="airi"
+          text="カブトムシ拾った"
+          time="2025/9/10/12:17"
+        ></Chatitem>
         <Image
           className={styles.logo}
           src="/next.svg"
@@ -19,6 +41,7 @@ export default function Home() {
           height={38}
           priority
         />
+
         <ol>
           <li>
             Get started by editing <code>src/app/page.tsx</code>.
