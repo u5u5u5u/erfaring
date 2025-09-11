@@ -35,19 +35,19 @@ export default function HomePage() {
     {
       id: "1",
       title: "なぜ空は青いの？",
+      createdAt: new Date(),
     },
     {
       id: "2",
       title: "なぜ海は塩辛いの？",
+      createdAt: new Date(),
     },
   ];
 
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <h1>
-          {dummyUser.name} の学びのあしあと
-        </h1>
+        <h1>{dummyUser.name} の学びのあしあと</h1>
         <p>
           {dummyUser.schoolId}
           {dummyUser.grade}年生
@@ -76,7 +76,10 @@ export default function HomePage() {
         <ul>
           {dummyQuestions.map((question) => (
             <li key={question.id}>
-              <Quest theme={question.title} />
+              <Quest
+                theme={question.title}
+                people={question.createdAt?.toLocaleDateString()}
+              />
             </li>
           ))}
         </ul>
