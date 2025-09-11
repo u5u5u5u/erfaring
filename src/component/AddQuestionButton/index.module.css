@@ -1,0 +1,43 @@
+.addButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 280px;
+  height: 60px;
+  background: #2463eb;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  gap: 8px;
+}
+
+.addButton:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.iconContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+}
+
+.plusIcon {
+  color: white;
+  font-weight: bold;
+}
+
+.buttonText {
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
