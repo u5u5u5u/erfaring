@@ -1,7 +1,5 @@
-import { ChevronRight } from "lucide-react";
-import React from "react";
-import styles from "./index.module.css";
 import Image from "next/image";
+import styles from "./index.module.css";
 
 interface ChatIconProps {
   icon: string;

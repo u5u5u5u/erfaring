@@ -1,20 +1,17 @@
-import { ChevronRight } from "lucide-react";
-import React from "react";
-import styles from "./index.module.css";
-import Image from "next/image";
 import ChatIcon from "../ChatIcon";
 import ChatSpeechBubble from "../ChatSpeechBubble";
+import styles from "./index.module.css";
 
-interface ChatitemProps {
+interface ChatItemProps {
   name: string;
   icon: string;
   text: string;
   time: string;
 }
 
-const Chatitem = ({ name, icon, text, time }: ChatitemProps) => {
+const Chatitem = ({ name, icon, text, time }: ChatItemProps) => {
   return (
-    <div className={styles.chatitem}>
+    <div className={styles.chatItem}>
       <ChatIcon icon={icon} name={name}></ChatIcon>
       <ChatSpeechBubble text={text} time={time}></ChatSpeechBubble>
     </div>

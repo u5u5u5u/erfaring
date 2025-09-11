@@ -1,9 +1,9 @@
-import type { User } from "@/types/user";
 import Button from "@/components/Button";
-import { BookOpen, Swords } from "lucide-react";
 import Quest from "@/components/Quest";
 import type { quest } from "@/types/quest";
 import type { Question } from "@/types/question";
+import type { User } from "@/types/user";
+import { BookOpen, Swords } from "lucide-react";
 import styles from "./page.module.css";
 
 export default function HomePage() {

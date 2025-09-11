@@ -5,7 +5,7 @@ import { Swords } from "lucide-react";
 import Quest from "@/components/Quest";
 import ChatIcon from "@/components/ChatIcon";
 import ChatSpeechBubble from "@/components/ChatSpeechBubble";
-import Chatitem from "@/components/chatitem";
+import ChatItem from "@/components/ChatItem";
 
 export default function Home() {
   return (
@@ -27,12 +27,12 @@ export default function Home() {
           time="2025年9月10日11:51"
         ></ChatSpeechBubble>
 
-        <Chatitem
+        <ChatItem
           icon="globe.svg"
           name="airi"
           text="カブトムシ拾った"
           time="2025/9/10/12:17"
-        ></Chatitem>
+        ></ChatItem>
         <Image
           className={styles.logo}
           src="/next.svg"
