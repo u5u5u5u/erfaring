@@ -12,3 +12,13 @@
   top: 20px;
   right: 20px;
 }
+
+.questionList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  li {
+    list-style: none;
+  }
+}
