@@ -1,4 +1,4 @@
-import AppLayout from "@/component/AppLayout";
+import AppLayout from "@/components/AppLayout";
 
 export default function StudentLayout({
   children,
