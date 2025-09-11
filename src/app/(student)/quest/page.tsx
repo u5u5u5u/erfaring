@@ -1,5 +1,5 @@
 import type quest from "@/types/quest";
-import Quest from "@/component/Quest";
+import Quest from "@/components/Quest";
 import { userAgent } from "next/server";
 
 export default function QuestionPage() {
