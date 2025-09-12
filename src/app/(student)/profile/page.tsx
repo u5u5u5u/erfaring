@@ -36,6 +36,12 @@ export default function ProfilePage() {
     { id: "3", title: "宇宙の神秘" },
   ];
 
+  const dummyClearQuestions = [
+    { id: "1", title: "なぜ空は青いのか？" },
+    { id: "2", title: "なぜ人は夢を見るのか？" },
+    { id: "3", title: "時間とは何か？" },
+  ];
+
   return (
     <div className={styles.container}>
       <ProfileIcon user={dummyUser} />
@@ -70,6 +76,16 @@ export default function ProfilePage() {
             {dummyClearQuests.map((quest) => (
               <li key={quest.id} className={styles.quest}>
                 {quest.title}
+              </li>
+            ))}
+          </div>
+        </div>
+        <div className={styles.section}>
+          <p className={styles.title}>解決した問い</p>
+          <div className={styles.list}>
+            {dummyClearQuestions.map((questions) => (
+              <li key={questions.id} className={styles.questions}>
+                {questions.title}
               </li>
             ))}
           </div>
