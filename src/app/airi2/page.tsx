@@ -9,6 +9,7 @@ import Chatitem from "@/components/chatitem";
 import Orangebutton from "@/components/Orangebutton";
 import Questditail from "@/components/Questditail";
 import Question from "@/components/Question";
+import Hashtag from "@/components/Hashtag";
 
 export default function Home() {
   return (
@@ -43,6 +44,8 @@ export default function Home() {
         ></Questditail>
 
         <Question text="問い" image="画像"></Question>
+
+        <Hashtag text="まちづくり"></Hashtag>
 
         <Image
           className={styles.logo}
