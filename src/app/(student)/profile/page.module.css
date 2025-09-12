@@ -1,0 +1,26 @@
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  height: 100vh;
+  padding: 20px;
+}
+
+.acquireNumberSection {
+  width: 40%;
+  border-radius: 12px;
+  background: #f8f8f8;
+  padding: 20px;
+}
+
+.title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.list {
+  display: flex;
+  justify-content: space-around;
+}
