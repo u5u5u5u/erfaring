@@ -30,13 +30,19 @@ export default function ProfilePage() {
     { id: "3", name: "回答の達人", icon: "HandHelping" },
   ];
 
+  const dummyClearQuests = [
+    { id: "1", title: "地球温暖化の原因と対策" },
+    { id: "2", title: "日本の歴史と文化" },
+    { id: "3", title: "宇宙の神秘" },
+  ];
+
   return (
     <div className={styles.container}>
       <ProfileIcon user={dummyUser} />
       <div className={styles.sections}>
         <div className={styles.section}>
           <p className={styles.title}>これまでの記録</p>
-          <div className={styles.list}>
+          <div className={styles.items}>
             {dummyAcquireNumbers.map((item) => (
               <AcquireNumber
                 key={item.name}
@@ -48,13 +54,23 @@ export default function ProfilePage() {
         </div>
         <div className={styles.section}>
           <p className={styles.title}>獲得したバッジ</p>
-          <div className={styles.list}>
+          <div className={styles.items}>
             {dummyBudges.map((budge) => (
               <Budge
                 key={budge.id}
                 name={budge.name}
                 icon={<BadgeCheck size={48} color="#FFD700" />}
               />
+            ))}
+          </div>
+        </div>
+        <div className={styles.section}>
+          <p className={styles.title}>クリアしたクエスト</p>
+          <div className={styles.list}>
+            {dummyClearQuests.map((quest) => (
+              <li key={quest.id} className={styles.quest}>
+                {quest.title}
+              </li>
             ))}
           </div>
         </div>
