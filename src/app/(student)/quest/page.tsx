@@ -18,7 +18,7 @@ export default function QuestionPage() {
         <ul className={styles.questList}>
           {dummyQuests.map((question) => (
             <li key={question.id} className={styles.questionItem}>
-              <Quest theme={question.title} people={question.name} />
+              <Quest theme={question.title} people={question.name} link={""} />
             </li>
           ))}
         </ul>
