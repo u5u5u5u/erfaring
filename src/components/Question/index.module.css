@@ -1,0 +1,40 @@
+.file::file-selector-button {
+  background-color: white;
+  font-size: 0rem;
+  width: 10rem;
+  height: 10rem;
+  border: none;
+  opacity: 0;
+}
+
+.file {
+    position: absolute;
+  font-size: 0rem;
+  width: 30rem;
+  height: 10rem;
+  
+  border: black 0.1rem dashed;
+  z-index: 100;
+}
+
+.filemix {
+  position: relative;
+  width: 30rem;
+  height: 10rem;
+}
+
+.FileOutput {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.Image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  z-index: 1;
+  object-fit: contain;
+}
