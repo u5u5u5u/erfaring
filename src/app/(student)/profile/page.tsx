@@ -2,6 +2,8 @@ import ProfileIcon from "@/components/ProfileIcon";
 import type { User } from "@/types/user";
 import AcquireNumber from "@/components/AcquireNumber";
 import styles from "./page.module.css";
+import Budge from "@/components/Budge";
+import { BadgeCheck } from "lucide-react";
 
 export default function ProfilePage() {
   const dummyUser: User = {
@@ -35,6 +37,12 @@ export default function ProfilePage() {
                 number={item.number}
               />
             ))}
+          </div>
+        </div>
+        <div className={styles.budgeSection}>
+          <p className={styles.title}>獲得したバッジ</p>
+          <div className={styles.list}>
+            <Budge name="探究マスター" icon={<BadgeCheck size={50} />} />
           </div>
         </div>
       </div>
