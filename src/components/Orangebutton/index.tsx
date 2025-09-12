@@ -1,4 +1,5 @@
 import styles from "./index.module.css";
+import Link from "next/link";
 
 interface OrangebuttonProps {
   text: string;
@@ -8,7 +9,7 @@ interface OrangebuttonProps {
 const Orangebutton = ({ text, link }: OrangebuttonProps) => {
   return (
     <div className={styles.Orange}>
-      <a href={link}>{text}</a>
+      <Link href={link}>{text}</Link>
     </div>
   );
 };
