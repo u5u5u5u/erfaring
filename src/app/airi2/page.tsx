@@ -10,6 +10,7 @@ import Orangebutton from "@/components/Orangebutton";
 import Questditail from "@/components/Questditail";
 import Question from "@/components/Question";
 import Hashtag from "@/components/Hashtag";
+import Inputbutton from "@/components/Inputbutton";
 
 export default function Home() {
   return (
@@ -46,6 +47,8 @@ export default function Home() {
         <Question text="問い" image="画像"></Question>
 
         <Hashtag text="まちづくり"></Hashtag>
+
+        <Inputbutton></Inputbutton>
 
         <Image
           className={styles.logo}
