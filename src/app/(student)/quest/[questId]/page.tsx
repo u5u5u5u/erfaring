@@ -3,7 +3,7 @@ import Questditail from "@/components/Questditail";
 import Hashtag from "@/components/Hashtag";
 
 interface QuestDetail {
-  params: { questId: string };
+  params: Promise<{ questId: string }>;
 }
 
 export default async function QuestPage({ params }: QuestDetail) {
