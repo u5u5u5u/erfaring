@@ -1,6 +1,7 @@
 "use client";
 
 import AddQuestionButton from "@/components/AddQuestionButton";
+import PageTitle from "@/components/PageTitle";
 import Quest from "@/components/Quest";
 import type { Question } from "@/types/question";
 import styles from "./page.module.css";
@@ -26,7 +27,7 @@ export default function QuestionPage() {
 
   return (
     <div className={styles.container}>
-      <h1>探究ノート</h1>
+      <PageTitle title="探究ノート" />
       <div className={styles.buttonContainer}>
         <AddQuestionButton />
       </div>
