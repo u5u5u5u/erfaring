@@ -1,3 +1,4 @@
+import PageTitle from "@/components/PageTitle";
 import Quest from "@/components/Quest";
 import type { quest } from "@/types/quest";
 import styles from "./page.module.css";
@@ -13,7 +14,7 @@ export default function QuestionPage() {
 
   return (
     <div className={styles.container}>
-      <h1>クエスト一覧</h1>
+      <PageTitle title="クエスト一覧" />
       <div>
         <ul className={styles.questList}>
           {dummyQuests.map((quest) => (
