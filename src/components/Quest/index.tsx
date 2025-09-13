@@ -1,12 +1,13 @@
 import { ChevronRight } from "lucide-react";
 import React from "react";
 import styles from "./index.module.css";
+import Link from "next/link";
 
 interface QuestProps {
   theme?: React.ReactNode;
   people?: React.ReactNode;
   color?: string;
-  link?: string;
+  link: string;
 }
 
 const Quest = ({ color, theme, people, link }: QuestProps) => {
@@ -16,10 +17,10 @@ const Quest = ({ color, theme, people, link }: QuestProps) => {
         <h1 className={styles.theme}>{theme}</h1>
         <div className={styles.people}>{people}</div>
       </div>
-      <a className={styles.link} href={link}>
+      <Link className={styles.link} href={link}>
         詳しく見る
         <ChevronRight className={styles.arrow} size={25}></ChevronRight>
-      </a>
+      </Link>
     </div>
   );
 };

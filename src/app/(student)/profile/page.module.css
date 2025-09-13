@@ -1,0 +1,42 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  height: 100vh;
+  padding: 2rem;
+}
+
+.sections {
+  display: grid;
+  grid-template-columns: repeat(2, 500px);
+  gap: 30px;
+}
+
+.section {
+  max-width: 500px;
+  border-radius: 12px;
+  background: #f8f8f8;
+  padding: 2rem;
+}
+
+.title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 1.6rem;
+}
+
+.items {
+  display: flex;
+  justify-content: space-around;
+}
+
+.list {
+  margin: 0 2rem;
+
+  li {
+    list-style: none;
+    font-size: 1.6rem;
+    border-bottom: 1px solid #ddd;
+    padding: 1rem 0;
+  }
+}

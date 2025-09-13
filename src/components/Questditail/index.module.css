@@ -1,0 +1,21 @@
+.title {
+  font-size: 1.5rem;
+  border-left: 1.5rem blue solid;
+  padding-left: 1rem;
+  font-weight: 600;
+}
+
+.Questditail {
+  width: 60rem;
+  height: 8rem;
+  border-radius: 1.5rem;
+  border: black solid;
+}
+
+.theme {
+  margin: 1.1rem 1.5rem;
+}
+
+.text {
+  margin-top: 1.2rem;
+}

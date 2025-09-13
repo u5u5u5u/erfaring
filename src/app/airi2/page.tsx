@@ -5,7 +5,12 @@ import { Swords } from "lucide-react";
 import Quest from "@/components/Quest";
 import ChatIcon from "@/components/ChatIcon";
 import ChatSpeechBubble from "@/components/ChatSpeechBubble";
-import ChatItem from "@/components/ChatItem";
+import Chatitem from "@/components/chatitem";
+import Orangebutton from "@/components/Orangebutton";
+import Questditail from "@/components/Questditail";
+import Question from "@/components/Question";
+import Hashtag from "@/components/Hashtag";
+import Inputbutton from "@/components/Inputbutton";
 
 export default function Home() {
   return (
@@ -27,12 +32,24 @@ export default function Home() {
           time="2025年9月10日11:51"
         ></ChatSpeechBubble>
 
-        <ChatItem
+        <Chatitem
           icon="globe.svg"
           name="airi"
           text="カブトムシ拾った"
           time="2025/9/10/12:17"
-        ></ChatItem>
+        ></Chatitem>
+        <Orangebutton link="/" text="このクエストに挑戦する"></Orangebutton>
+        <Questditail
+          title="このクエストのミッション"
+          text="地域の魅力を伝えるにはどんな写真を撮ったらいいか考えよう！"
+        ></Questditail>
+
+        <Question text="問い" image="画像"></Question>
+
+        <Hashtag text="まちづくり"></Hashtag>
+
+        <Inputbutton></Inputbutton>
+
         <Image
           className={styles.logo}
           src="/next.svg"
