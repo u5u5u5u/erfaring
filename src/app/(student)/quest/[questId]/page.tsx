@@ -2,7 +2,14 @@ import styles from "./page.module.css";
 import Questditail from "@/components/Questditail";
 import Hashtag from "@/components/Hashtag";
 
-export default function QuestPage() {
+interface QuestDetail {
+  params: { questId: string };
+}
+
+export default async function QuestPage({ params }: QuestDetail) {
+  const { questId } = await params;
+  console.log("questId:", questId);
+
   const dummyQuest = {
     id: "airi1",
     name: "○×市役所",
