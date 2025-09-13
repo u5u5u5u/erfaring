@@ -2,23 +2,16 @@
 
 import { Plus } from "lucide-react";
 import styles from "./index.module.css";
+import Link from "next/link";
 
-interface AddQuestionButtonProps {
-  onClick?: () => void;
-  disabled?: boolean;
-}
-
-const AddQuestionButton = ({
-  onClick,
-  disabled = false,
-}: AddQuestionButtonProps) => {
+const AddQuestionButton = () => {
   return (
-    <button className={styles.addButton} onClick={onClick} disabled={disabled}>
+    <Link className={styles.addButton} href="/question/registration">
       <div className={styles.iconContainer}>
         <Plus size={24} className={styles.plusIcon} />
       </div>
       <span className={styles.buttonText}>新しい問いを追加</span>
-    </button>
+    </Link>
   );
 };
 

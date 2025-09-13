@@ -13,7 +13,7 @@ export default function QuestionPage() {
 
   return (
     <div className={styles.container}>
-      <h1>探究ノート</h1>
+      <h1>クエスト一覧</h1>
       <div>
         <ul className={styles.questList}>
           {dummyQuests.map((question) => (
