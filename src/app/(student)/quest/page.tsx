@@ -16,9 +16,13 @@ export default function QuestionPage() {
       <h1>クエスト一覧</h1>
       <div>
         <ul className={styles.questList}>
-          {dummyQuests.map((question) => (
-            <li key={question.id} className={styles.questionItem}>
-              <Quest theme={question.title} people={question.name} link={""} />
+          {dummyQuests.map((quest) => (
+            <li key={quest.id} className={styles.questItem}>
+              <Quest
+                theme={quest.title}
+                people={quest.name}
+                link={`/quest/${quest.id}`}
+              />
             </li>
           ))}
         </ul>

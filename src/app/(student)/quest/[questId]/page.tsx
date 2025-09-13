@@ -3,25 +3,32 @@ import Questditail from "@/components/Questditail";
 import Hashtag from "@/components/Hashtag";
 
 export default function QuestPage() {
+  const dummyQuest = {
+    id: "airi1",
+    name: "○×市役所",
+    title: "地域の魅力を写真で伝えよう！",
+    HashTags: ["まちづくり", "アイデア"],
+    mission: "地域の魅力を伝えるにはどんな写真を撮ったらいいか考えよう！",
+    hint: "住んでいる地域で有名なものは何かな？",
+  };
+
   return (
     <div className={styles.container}>
-      <div>
-        <h1>クエストタイトル</h1>
-        <p>クエスト投稿者</p>
+      <div className={styles.header}>
+        <h1>{dummyQuest.title}</h1>
+        <p>{dummyQuest.name}</p>
       </div>
       <div className={styles.hashtagContainer}>
-        <Hashtag text="まちづくり" />
-        <Hashtag text="アイデア" />
+        {dummyQuest.HashTags.map((tag, index) => (
+          <Hashtag key={index} text={tag} />
+        ))}
       </div>
       <div className={styles.questDetailContainer}>
         <Questditail
           title="このクエストのミッション"
-          text="地域の魅力を伝えるにはどんな写真を撮ったらいいか考えよう！"
+          text={dummyQuest.mission}
         />
-        <Questditail
-          title="達人からのヒント"
-          text="住んでいる地域で有名なものは何かな？"
-        />
+        <Questditail title="達人からのヒント" text={dummyQuest.hint} />
       </div>
     </div>
   );
