@@ -1,4 +1,3 @@
-import StudentLayout from "@/app/(student)/layout";
 import styles from "./index.module.css";
 
 interface QuestditailProps {
