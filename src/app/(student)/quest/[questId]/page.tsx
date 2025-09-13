@@ -18,12 +18,12 @@ export default function QuestPage() {
         <h1>{dummyQuest.title}</h1>
         <p>{dummyQuest.name}</p>
       </div>
-      <div className={styles.hashtagContainer}>
+      <div className={styles.hashtags}>
         {dummyQuest.HashTags.map((tag, index) => (
           <Hashtag key={index} text={tag} />
         ))}
       </div>
-      <div className={styles.questDetailContainer}>
+      <div className={styles.questDetails}>
         <Questditail
           title="このクエストのミッション"
           text={dummyQuest.mission}
