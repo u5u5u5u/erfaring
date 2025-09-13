@@ -5,7 +5,7 @@ import { Swords } from "lucide-react";
 import Quest from "@/components/Quest";
 import ChatIcon from "@/components/ChatIcon";
 import ChatSpeechBubble from "@/components/ChatSpeechBubble";
-import Chatitem from "@/components/chatitem";
+import Chatitem from "@/components/ChatItem";
 import Orangebutton from "@/components/Orangebutton";
 import Questditail from "@/components/Questditail";
 import Question from "@/components/Question";
