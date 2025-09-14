@@ -1,0 +1,21 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  height: 100vh;
+  padding: 20px;
+}
+
+.title {
+  font-size: 3.5rem;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+}
+
+.inputContainer {
+  position: fixed;
+  bottom: 20px;
+  width: 100%;
+  border-top: 1px solid #ccc;
+  padding-top: 20px;
+}
