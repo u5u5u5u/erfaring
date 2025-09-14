@@ -1,3 +1,4 @@
+import PageTitle from "@/components/PageTitle";
 import Quest from "@/components/Quest";
 import type { quest } from "@/types/quest";
 import styles from "./page.module.css";
@@ -13,12 +14,16 @@ export default function QuestionPage() {
 
   return (
     <div className={styles.container}>
-      <h1>探究ノート</h1>
+      <PageTitle title="クエスト一覧" />
       <div>
         <ul className={styles.questList}>
-          {dummyQuests.map((question) => (
-            <li key={question.id} className={styles.questionItem}>
-              <Quest theme={question.title} people={question.name} link={""} />
+          {dummyQuests.map((quest) => (
+            <li key={quest.id} className={styles.questItem}>
+              <Quest
+                theme={quest.title}
+                people={quest.name}
+                link={`/quest/${quest.id}`}
+              />
             </li>
           ))}
         </ul>
