@@ -1,9 +1,10 @@
 .text {
-  border-radius: 1rem;
-  background-color: rgb(186, 186, 186);
+  font-size: 1.6rem;
+  border-radius: 20px;
+  background-color: #d9d9d9;
+  font-weight: bold;
   color: black;
   width: fit-content;
   height: fit-content;
-  padding: 0.3rem 0.7rem 0.5rem;
-  
+  padding: 1rem 1.5rem;
 }

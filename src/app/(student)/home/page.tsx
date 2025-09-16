@@ -66,7 +66,11 @@ export default function HomePage() {
         <ul>
           {dummyQuests.map((quest) => (
             <li key={quest.id}>
-              <Quest theme={quest.title} people={quest.name} link={""} />
+              <Quest
+                theme={quest.title}
+                people={quest.name}
+                link={`/quest/${quest.id}`}
+              />
             </li>
           ))}
         </ul>
@@ -79,7 +83,7 @@ export default function HomePage() {
               <Quest
                 theme={question.title}
                 people={question.createdAt?.toLocaleDateString()}
-                link={""}
+                link={`/question/${question.id}`}
               />
             </li>
           ))}
