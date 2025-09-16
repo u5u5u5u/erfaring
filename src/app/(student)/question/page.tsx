@@ -38,7 +38,7 @@ export default function QuestionPage() {
               <Quest
                 theme={question.title}
                 people={question.createdAt?.toLocaleDateString()}
-                link={""}
+                link={`/question/${question.id}`}
               />
             </li>
           ))}
