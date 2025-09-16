@@ -1,21 +1,19 @@
-.title {
-  font-size: 1.5rem;
-  border-left: 1.5rem blue solid;
-  padding-left: 1rem;
-  font-weight: 600;
-}
-
 .Questditail {
-  width: 60rem;
-  height: 8rem;
+  width: 100%;
+  max-width: 800px;
   border-radius: 1.5rem;
   border: black solid;
-}
+  padding: 3rem;
 
-.theme {
-  margin: 1.1rem 1.5rem;
-}
+  .title {
+    font-size: 2rem;
+    border-left: 1.5rem blue solid;
+    padding-left: 1rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+  }
 
-.text {
-  margin-top: 1.2rem;
+  .text {
+    font-size: 1.6rem;
+  }
 }

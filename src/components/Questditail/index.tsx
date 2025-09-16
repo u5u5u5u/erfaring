@@ -8,10 +8,8 @@ interface QuestditailProps {
 const Questditail = ({ title, text }: QuestditailProps) => {
   return (
     <div className={styles.Questditail}>
-      <div className={styles.theme}>
-        <div className={styles.title}>{title}</div>
-        <p className={styles.text}>{text}</p>
-      </div>
+      <div className={styles.title}>{title}</div>
+      <p className={styles.text}>{text}</p>
     </div>
   );
 };

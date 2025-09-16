@@ -8,7 +8,7 @@ interface ChatIconProps {
 
 const ChatIcon = ({ icon, name }: ChatIconProps) => {
   return (
-    <div className={styles.ChatIcon}>
+    <div className={styles.chatIcon}>
       <Image
         className={styles.image}
         height={50}
