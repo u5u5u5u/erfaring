@@ -47,17 +47,17 @@ export default function HomePage() {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <h1>{dummyUser.name} の学びのあしあと</h1>
+        <h1>{dummyUser.name}の学びのあしあと</h1>
         <p>
           {dummyUser.schoolId}
           {dummyUser.grade}年生
         </p>
       </div>
       <div className={styles.buttons}>
-        <Button color="#2463EB" icon={<Swords />} link="/quest">
+        <Button color="#2463EB" icon={<Swords size={30} />} link="/quest">
           クエストに挑戦
         </Button>
-        <Button color="#21C55D" icon={<BookOpen />} link="/question">
+        <Button color="#21C55D" icon={<BookOpen size={30} />} link="/question">
           問いを探究
         </Button>
       </div>
