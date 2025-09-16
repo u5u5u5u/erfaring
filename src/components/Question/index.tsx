@@ -18,13 +18,13 @@ const Question = ({ text, image }: QuestionProps) => {
   };
 
   return (
-    <div className={styles.Question}>
+    <div className={styles.question}>
       <div className={styles.text}>
-        <p>{text}</p>
-        <input type="text" size={40}></input>
+        <label className={styles.inputLabel}>{text}</label>
+        <input type="text" size={40} className={styles.input}></input>
       </div>
       <div className={styles.image}>
-        <p>{image}</p>
+        <label className={styles.imageLabel}>{image}</label>
         <div className={styles.filemix}>
           <input
             className={styles.file}
@@ -39,7 +39,7 @@ const Question = ({ text, image }: QuestionProps) => {
               src={preview}
             ></Image>
           )}
-          <FileOutput className={styles.FileOutput}></FileOutput>
+          <FileOutput className={styles.FileOutput} size={50}></FileOutput>
         </div>
       </div>
     </div>
