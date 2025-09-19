@@ -30,7 +30,24 @@ export async function updateSession(request: NextRequest) {
   );
 
   // refreshing the auth token
-  await supabase.auth.getUser();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  const isAuthPath =
+    request.nextUrl.pathname.startsWith("/login") ||
+    request.nextUrl.pathname.startsWith("/auth") ||
+    request.nextUrl.pathname === "/";
+
+  if (!user && !isAuthPath) {
+    const redirectUrl = new URL("/login", request.url);
+    return NextResponse.redirect(redirectUrl);
+  }
+
+  if (user && request.nextUrl.pathname === "/login") {
+    const redirectUrl = new URL("/home", request.url);
+    return NextResponse.redirect(redirectUrl);
+  }
 
   return supabaseResponse;
 }
