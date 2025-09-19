@@ -1,8 +1,10 @@
 "use client";
-import React, { useEffect, useState } from "react";
+
 import { createClient } from "@/utils/supabase/client";
 import Image from "next/image";
+import React, { useEffect, useState } from "react";
 import styles from "./index.module.css";
+import { User } from "lucide-react";
 
 export default function Avatar({
   uid,
@@ -13,7 +15,7 @@ export default function Avatar({
   uid: string | null;
   url: string | null;
   size: number;
-  onUpload: (url: string) => void;
+  onUpload?: (url: string) => void;
 }) {
   const supabase = createClient();
   const [avatarUrl, setAvatarUrl] = useState<string | null>(url);
@@ -61,7 +63,9 @@ export default function Avatar({
         throw uploadError;
       }
 
-      onUpload(filePath);
+      if (onUpload) {
+        onUpload(filePath);
+      }
     } catch (error) {
       alert("Error uploading avatar!");
     } finally {
@@ -81,30 +85,29 @@ export default function Avatar({
           style={{ height: size, width: size }}
         />
       ) : (
-        <div
-          className={`${styles.avatar} ${styles.noImage}`}
-          style={{ height: size, width: size }}
-        />
+        <User className={styles.avatar} size={size} />
       )}
-      <div style={{ width: size }}>
-        <label
-          className={`${styles.button} ${styles.primary} ${styles.block}`}
-          htmlFor="single"
-        >
-          {uploading ? "Uploading ..." : "Upload"}
-        </label>
-        <input
-          style={{
-            visibility: "hidden",
-            position: "absolute",
-          }}
-          type="file"
-          id="single"
-          accept="image/*"
-          onChange={uploadAvatar}
-          disabled={uploading}
-        />
-      </div>
+      {onUpload && (
+        <div style={{ width: size }}>
+          <label
+            className={`${styles.button} ${styles.primary} ${styles.block}`}
+            htmlFor="single"
+          >
+            {uploading ? "Uploading ..." : "Upload"}
+          </label>
+          <input
+            style={{
+              visibility: "hidden",
+              position: "absolute",
+            }}
+            type="file"
+            id="single"
+            accept="image/*"
+            onChange={uploadAvatar}
+            disabled={uploading}
+          />
+        </div>
+      )}
     </div>
   );
 }
