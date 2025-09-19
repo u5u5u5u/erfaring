@@ -24,7 +24,7 @@ const ProfileIcon = ({ user }: ProfileIconProps) => {
       <div className={styles.information}>
         <h1>{user.name}</h1>
         <p>
-          {user.schoolId} {user.grade}年生
+          {user.schoolId}{user.grade}年生
         </p>
       </div>
     </div>

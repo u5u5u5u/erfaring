@@ -1,18 +1,24 @@
 .quest {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   height: 100px;
-  width: 700px;
+  width: 100%;
+  max-width: 840px;
   border-radius: 15px;
   border: gray solid;
-  display: flex;
-  justify-content: space-around;
+  padding: 0 40px;
 }
 
 .theme {
+  font-size: 2rem;
+  font-weight: bold;
   color: black;
 }
 
 .people {
-  color: black;
+  font-size: 1.5rem;
+  color: gray;
   padding-top: 10px;
 }
 
@@ -21,11 +27,6 @@
   text-align: right;
   display: flex;
   align-items: center;
+  font-size: 1.5rem;
 }
 
-.arrow {
-}
-
-.infomation {
-  padding-left: 10px;
-}

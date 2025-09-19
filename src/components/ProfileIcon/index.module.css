@@ -12,12 +12,11 @@
 }
 
 .information {
-  display: flex;
-  flex-direction: column;
+  font-weight: bold;
 
   h1 {
     font-size: 3.5rem;
-    font-weight: 800;
+    margin-bottom: 1.5rem;
   }
 
   p {

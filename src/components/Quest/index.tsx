@@ -13,7 +13,7 @@ interface QuestProps {
 const Quest = ({ color, theme, people, link }: QuestProps) => {
   return (
     <div className={styles.quest} style={{ backgroundColor: color }}>
-      <div className={styles.infomation}>
+      <div className={styles.information}>
         <h1 className={styles.theme}>{theme}</h1>
         <div className={styles.people}>{people}</div>
       </div>
