@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { createClient } from "@/utils/supabase/client";
 import Image from "next/image";
+import styles from "./index.module.css";
 
 export default function Avatar({
   uid,
@@ -76,17 +77,20 @@ export default function Avatar({
           height={size}
           src={avatarUrl}
           alt="Avatar"
-          className="avatar image"
+          className={`${styles.avatar} ${styles.image}`}
           style={{ height: size, width: size }}
         />
       ) : (
         <div
-          className="avatar no-image"
+          className={`${styles.avatar} ${styles.noImage}`}
           style={{ height: size, width: size }}
         />
       )}
       <div style={{ width: size }}>
-        <label className="button primary block" htmlFor="single">
+        <label
+          className={`${styles.button} ${styles.primary} ${styles.block}`}
+          htmlFor="single"
+        >
           {uploading ? "Uploading ..." : "Upload"}
         </label>
         <input

@@ -3,6 +3,7 @@ import { useCallback, useEffect, useState } from "react";
 import { createClient } from "@/utils/supabase/client";
 import { type User } from "@supabase/supabase-js";
 import Avatar from "@/components/Avatar";
+import styles from "./index.module.css";
 
 export default function AccountForm({ user }: { user: User | null }) {
   const supabase = createClient();
@@ -75,7 +76,7 @@ export default function AccountForm({ user }: { user: User | null }) {
   }
 
   return (
-    <div className="form-widget">
+    <div className={styles.formWidget}>
       <Avatar
         uid={user?.id ?? null}
         url={avatar_url}
@@ -120,7 +121,7 @@ export default function AccountForm({ user }: { user: User | null }) {
 
       <div>
         <button
-          className="button primary block"
+          className={`${styles.button} ${styles.primary} ${styles.block}`}
           onClick={() =>
             updateProfile({ fullname, username, website, avatar_url })
           }
@@ -132,7 +133,7 @@ export default function AccountForm({ user }: { user: User | null }) {
 
       <div>
         <form action="/auth/signout" method="post">
-          <button className="button block" type="submit">
+          <button className={`${styles.button} ${styles.block}`} type="submit">
             Sign out
           </button>
         </form>
