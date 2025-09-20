@@ -11,8 +11,16 @@ const ChatItem = ({ message }: ChatItemProps) => {
   return (
     <div className={styles.chatItem}>
       <ChatIcon
-        icon={message.chat_id?.user_id?.avatar_url || "/globe.svg"}
-        name={message.chat_id?.user_id?.username || "AIメンター"}
+        icon={
+          message.role === "user"
+            ? message.chat_id?.user_id?.avatar_url || ""
+            : "/globe.svg"
+        }
+        name={
+          message.role === "user"
+            ? message.chat_id?.user_id?.username || ""
+            : "AIメンター"
+        }
       />
       <ChatSpeechBubble
         text={message.content}

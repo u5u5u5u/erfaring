@@ -33,11 +33,13 @@ export default async function ChatPage({ params }: ChatPageProps) {
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>{messagesData[0].chat_id.title}</h1>
-      {messagesData.map((message, index) => (
-        <div key={message.id} className={styles.questionItem}>
-          <ChatItem message={messagesData[index]} />
-        </div>
-      ))}
+      <div className={styles.chatContainer}>
+        {messagesData.map((message, index) => (
+          <div key={message.id} className={styles.questionItem}>
+            <ChatItem message={messagesData[index]} />
+          </div>
+        ))}
+      </div>
       <div className={styles.inputContainer}>
         <MessageForm chat_id={questionId} history={history} />
       </div>
