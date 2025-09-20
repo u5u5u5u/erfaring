@@ -1,7 +1,7 @@
 import Avatar from "@/components/Avatar";
+import type { UserProfile } from "@/types/user";
 import { User as UserIcon } from "lucide-react";
 import styles from "./index.module.css";
-import type { UserProfile } from "@/types/user";
 
 interface ProfileIconProps {
   user: UserProfile | null;
@@ -19,7 +19,8 @@ const ProfileIcon = ({ user }: ProfileIconProps) => {
       <div className={styles.information}>
         <h1>{user?.full_name}</h1>
         <p>
-          {user?.school_id && user?.school_id} {user?.grade && user?.grade}年生
+          {user?.school_id?.name && user?.school_id?.name}
+          {user?.grade && user?.grade}年生
         </p>
       </div>
     </div>

@@ -1,11 +1,10 @@
-import ProfileIcon from "@/components/ProfileIcon";
-import type { User } from "@/types/user";
 import AcquireNumber from "@/components/AcquireNumber";
-import styles from "./page.module.css";
 import Budge from "@/components/Budge";
-import { BadgeCheck } from "lucide-react";
+import ProfileIcon from "@/components/ProfileIcon";
 import type { Budge as BudgeType } from "@/types/budge";
 import { createClient } from "@/utils/supabase/server";
+import { BadgeCheck } from "lucide-react";
+import styles from "./page.module.css";
 
 export default async function ProfilePage() {
   const supabase = await createClient();
@@ -13,12 +12,21 @@ export default async function ProfilePage() {
     data: { user },
   } = await supabase.auth.getUser();
 
-  const { data: userData, error } = await supabase
+  const { data: rawUserData, error } = await supabase
     .from("profiles")
-    .select(`id, full_name, avatar_url`)
+    .select(`id, full_name, avatar_url, school_id(name), grade`)
     .eq("id", user?.id)
     .single();
-  console.log("data", userData);
+  console.log("data", rawUserData);
+  const userData = rawUserData
+    ? {
+        ...rawUserData,
+        school_id: Array.isArray(rawUserData.school_id)
+          ? rawUserData.school_id[0]
+          : rawUserData.school_id,
+      }
+    : null;
+  console.log("userData", userData);
 
   if (error) {
     console.error("Error fetching user profile:", error);
