@@ -2,6 +2,7 @@ import Avatar from "@/components/Avatar";
 import type { UserProfile } from "@/types/user";
 import { User as UserIcon } from "lucide-react";
 import styles from "./index.module.css";
+import { convertGrade } from "@/utils/convertGrade";
 
 interface ProfileIconProps {
   user: UserProfile | null;
@@ -20,7 +21,7 @@ const ProfileIcon = ({ user }: ProfileIconProps) => {
         <h1>{user?.full_name}</h1>
         <p>
           {user?.school_id?.name && user?.school_id?.name}
-          {user?.grade && user?.grade}年生
+          <span>{convertGrade(user?.grade && user?.grade)}年生</span>
         </p>
       </div>
     </div>
