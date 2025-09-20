@@ -6,7 +6,6 @@ interface ChatSpeechBubbleProps {
 }
 
 const ChatSpeechBubble = ({ text, time }: ChatSpeechBubbleProps) => {
-  console.log("time", time);
   return (
     <div className={styles.speechBubble}>
       <h1>{text}</h1>

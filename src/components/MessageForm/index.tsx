@@ -4,9 +4,10 @@ import { sendMessage } from "./actions";
 
 interface MessageFormProps {
   chat_id?: string;
+  history?: { role: string; parts: { text: string }[] }[];
 }
 
-const MessageForm = ({ chat_id }: MessageFormProps) => {
+const MessageForm = ({ chat_id, history }: MessageFormProps) => {
   return (
     <form className={styles.messageForm}>
       <label htmlFor="chat_id" />
@@ -15,6 +16,14 @@ const MessageForm = ({ chat_id }: MessageFormProps) => {
         name="chat_id"
         type="hidden"
         value={chat_id}
+        readOnly
+      />
+      <label htmlFor="history" />
+      <input
+        id="history"
+        name="history"
+        type="hidden"
+        value={JSON.stringify(history)}
         readOnly
       />
       <label htmlFor="message" />

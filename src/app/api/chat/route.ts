@@ -60,11 +60,8 @@ export async function POST(request: NextRequest) {
       message: userInput,
     });
 
-    const updatedHistory = await chat.getHistory();
-
     return NextResponse.json({
       response: response.text,
-      history: updatedHistory,
     });
   } catch (error) {
     console.error("Error in /api/chat:", error);

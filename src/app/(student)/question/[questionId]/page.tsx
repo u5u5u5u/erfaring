@@ -16,12 +16,19 @@ export default async function ChatPage({ params }: ChatPageProps) {
     .select("*, chat_id(title, user_id(avatar_url, username))")
     .eq("chat_id", questionId);
 
-  console.log("messagesData", messagesData);
-
   if (messagesError) {
     console.error("Error fetching messages:", messagesError);
     return <div>Error loading messages</div>;
   }
+
+  const history = messagesData.map((message) => ({
+    role: message.role,
+    parts: [
+      {
+        text: message.content,
+      },
+    ],
+  }));
 
   return (
     <div className={styles.container}>
@@ -32,7 +39,7 @@ export default async function ChatPage({ params }: ChatPageProps) {
         </div>
       ))}
       <div className={styles.inputContainer}>
-        <MessageForm chat_id={questionId} />
+        <MessageForm chat_id={questionId} history={history} />
       </div>
     </div>
   );
