@@ -28,13 +28,6 @@ export async function sendMessage(formData: FormData) {
     return;
   }
 
-  console.log(
-    JSON.stringify({
-      userInput: message,
-      chatHistory: history ? JSON.parse(history) : [],
-    })
-  );
-
   try {
     const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
     const response = await fetch(`${baseUrl}/api/chat`, {
@@ -54,7 +47,6 @@ export async function sendMessage(formData: FormData) {
     }
 
     const result = await response.json();
-    console.log("Response from /api/chat:", result);
 
     // AIの応答をデータベースに保存
     if (result.response) {

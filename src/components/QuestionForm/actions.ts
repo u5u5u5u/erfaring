@@ -110,7 +110,6 @@ export async function submitQuestion(formData: FormData) {
       console.error("Error calling chat API:", fetchError);
     }
 
-    console.log("Created chat:", chatData);
     redirect(`/question/${chatId}`);
   }
 }
