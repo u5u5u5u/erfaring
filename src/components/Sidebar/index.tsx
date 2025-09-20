@@ -13,14 +13,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import styles from "./index.module.css";
+import Avatar from "@/components/Avatar";
 
 interface SidebarProps {
   isOpen: boolean;
-  userIconUrl?: string;
+  avatarUrl: string;
   onToggle: () => void;
 }
 
-const Sidebar = ({ isOpen, userIconUrl, onToggle }: SidebarProps) => {
+const Sidebar = ({ isOpen, avatarUrl, onToggle }: SidebarProps) => {
   const pathname = usePathname();
 
   const menuItems = [
@@ -57,14 +58,8 @@ const Sidebar = ({ isOpen, userIconUrl, onToggle }: SidebarProps) => {
       <div className={styles.header}>
         {isOpen && (
           <>
-            {userIconUrl ? (
-              <Image
-                src=""
-                alt="Logo"
-                width={50}
-                height={50}
-                className={styles.userIcon}
-              />
+            {avatarUrl ? (
+              <Avatar url={avatarUrl} size={50} />
             ) : (
               <UserRound size={50} className={styles.userIcon} />
             )}

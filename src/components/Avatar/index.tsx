@@ -12,7 +12,7 @@ export default function Avatar({
   size,
   onUpload,
 }: {
-  uid: string | null;
+  uid?: string | null;
   url: string | null;
   size: number;
   onUpload?: (url: string) => void;
