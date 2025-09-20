@@ -9,7 +9,6 @@ interface ProfileIconProps {
 }
 
 const ProfileIcon = ({ user }: ProfileIconProps) => {
-  console.log("ProfileIcon", { user });
   return (
     <div className={styles.profileIcon}>
       {user?.avatar_url ? (

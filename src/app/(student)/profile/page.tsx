@@ -17,7 +17,7 @@ export default async function ProfilePage() {
     .select(`id, full_name, avatar_url, school_id(name), grade`)
     .eq("id", user?.id)
     .single();
-  console.log("data", rawUserData);
+
   const userData = rawUserData
     ? {
         ...rawUserData,
@@ -26,7 +26,6 @@ export default async function ProfilePage() {
           : rawUserData.school_id,
       }
     : null;
-  console.log("userData", userData);
 
   if (error) {
     console.error("Error fetching user profile:", error);

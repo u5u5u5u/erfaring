@@ -8,7 +8,6 @@ export default async function StudentLayout({
 }>) {
   const supabase = await createClient();
   const { data } = await supabase.auth.getUser();
-  console.log(data);
   const { data: avatarUrl } = await supabase
     .from("profiles")
     .select("avatar_url")
