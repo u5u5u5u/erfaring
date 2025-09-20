@@ -1,14 +1,23 @@
 import styles from "./page.module.css";
 import Chatitem from "@/components/chatitem";
 import Inputbutton from "@/components/Inputbutton";
+import { createClient } from "@/utils/supabase/server";
 
 interface ChatPageProps {
   params: Promise<{ questionId: string }>;
 }
 
 export default async function ChatPage({ params }: ChatPageProps) {
+  const supabase = await createClient();
   const { questionId } = await params;
-  console.log("questionId:", questionId);
+
+  const { data: messagesData, error: messagesError } = await supabase
+    .from("messages")
+    .select("*, chat_id(user_id(avatar_url, username))")
+    .eq("chat_id", questionId)
+    .single();
+
+  console.log("messagesData", messagesData);
 
   const dummyQuestions = [
     {
