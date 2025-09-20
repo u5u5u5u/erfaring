@@ -16,9 +16,10 @@ export default function Avatar({
   url: string | null;
   size: number;
   onUpload?: (url: string) => void;
-}) {
+  }) {
+  console.log("Avatar", { uid, url, size, onUpload });
   const supabase = createClient();
-  const [avatarUrl, setAvatarUrl] = useState<string | null>(url);
+  const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
   const [uploading, setUploading] = useState(false);
 
   useEffect(() => {

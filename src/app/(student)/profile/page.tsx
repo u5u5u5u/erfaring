@@ -5,18 +5,24 @@ import styles from "./page.module.css";
 import Budge from "@/components/Budge";
 import { BadgeCheck } from "lucide-react";
 import type { Budge as BudgeType } from "@/types/budge";
+import { createClient } from "@/utils/supabase/server";
 
-export default function ProfilePage() {
-  const dummyUser: User = {
-    id: "1",
-    name: "ゆうご",
-    email: "yugo@example.com",
-    password: "password123",
-    imageUrl: "/vercel.svg",
-    role: "student",
-    schoolId: "〇〇市立〇〇小学校",
-    grade: 5,
-  };
+export default async function ProfilePage() {
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  const { data: userData, error } = await supabase
+    .from("profiles")
+    .select(`id, full_name, avatar_url`)
+    .eq("id", user?.id)
+    .single();
+  console.log("data", userData);
+
+  if (error) {
+    console.error("Error fetching user profile:", error);
+  }
 
   const dummyAcquireNumbers = [
     { name: "quest", number: 12 },
@@ -44,7 +50,7 @@ export default function ProfilePage() {
 
   return (
     <div className={styles.container}>
-      <ProfileIcon user={dummyUser} />
+      <ProfileIcon user={userData} />
       <div className={styles.sections}>
         <div className={styles.section}>
           <p className={styles.title}>これまでの記録</p>

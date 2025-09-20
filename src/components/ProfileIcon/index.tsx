@@ -1,29 +1,25 @@
 import Avatar from "@/components/Avatar";
-import type { User as UserType } from "@/types/user";
-import { User } from "lucide-react";
+import { User as UserIcon } from "lucide-react";
 import styles from "./index.module.css";
+import type { UserProfile } from "@/types/user";
 
 interface ProfileIconProps {
-  user: UserType;
+  user: UserProfile | null;
 }
 
 const ProfileIcon = ({ user }: ProfileIconProps) => {
+  console.log("ProfileIcon", { user });
   return (
     <div className={styles.profileIcon}>
-      {user.imageUrl ? (
-        <Avatar
-          uid={user.id}
-          url={user.imageUrl}
-          size={80}
-        />
+      {user?.avatar_url ? (
+        <Avatar uid={user.id} url={user.avatar_url} size={80} />
       ) : (
-        <User className={styles.defaultIcon} size={80} />
+        <UserIcon className={styles.defaultIcon} size={80} />
       )}
       <div className={styles.information}>
-        <h1>{user.name}</h1>
+        <h1>{user?.full_name}</h1>
         <p>
-          {user.schoolId}
-          {user.grade}年生
+          {user?.school_id && user?.school_id} {user?.grade && user?.grade}年生
         </p>
       </div>
     </div>
