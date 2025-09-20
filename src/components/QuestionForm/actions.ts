@@ -60,17 +60,54 @@ export async function submitQuestion(formData: FormData) {
   if (chatData) {
     const chatId = chatData[0].id;
 
-    const { error: messageError } = await supabase
-      .from("messages")
-      .insert({
-        chat_id: chatId,
-        content: title,
-        role: "user",
-      });
+    // ユーザーのメッセージを保存
+    const { error: messageError } = await supabase.from("messages").insert({
+      chat_id: chatId,
+      content: title,
+      role: "user",
+    });
 
     if (messageError) {
       console.error("Message insert error:", messageError);
       return;
+    }
+
+    // AIのレスポンスを取得
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_URL || "http://localhost:3000"}/api/chat`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            userInput: title,
+            chatHistory: [],
+          }),
+        }
+      );
+
+      if (response.ok) {
+        const aiResponse = await response.json();
+
+        // AIのメッセージを保存
+        const { error: aiMessageError } = await supabase
+          .from("messages")
+          .insert({
+            chat_id: chatId,
+            content: aiResponse.response,
+            role: "model",
+          });
+
+        if (aiMessageError) {
+          console.error("AI message insert error:", aiMessageError);
+        }
+      } else {
+        console.error("Failed to get AI response:", response.status);
+      }
+    } catch (fetchError) {
+      console.error("Error calling chat API:", fetchError);
     }
 
     console.log("Created chat:", chatData);
