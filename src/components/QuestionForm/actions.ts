@@ -39,8 +39,10 @@ export async function submitQuestion(formData: FormData) {
     imageUrl = publicUrl;
   }
 
+  const title = formData.get("title") as string;
+
   const data = {
-    title: formData.get("title") as string,
+    title: title,
     image_url: imageUrl,
     user_id: user.id,
   };
@@ -52,10 +54,26 @@ export async function submitQuestion(formData: FormData) {
 
   if (error) {
     console.error(error);
+    return;
   }
 
   if (chatData) {
+    const chatId = chatData[0].id;
+
+    const { error: messageError } = await supabase
+      .from("messages")
+      .insert({
+        chat_id: chatId,
+        content: title,
+        role: "user",
+      });
+
+    if (messageError) {
+      console.error("Message insert error:", messageError);
+      return;
+    }
+
     console.log("Created chat:", chatData);
-    redirect(`/question/${chatData[0].id}`);
+    redirect(`/question/${chatId}`);
   }
 }

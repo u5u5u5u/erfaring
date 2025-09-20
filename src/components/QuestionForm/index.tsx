@@ -4,8 +4,8 @@ import OrangeButton from "@/components/OrangeButton";
 import { FileOutput } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
-import styles from "./index.module.css";
 import { submitQuestion } from "./actions";
+import styles from "./index.module.css";
 
 const QuestionForm = () => {
   const [preview, setPreview] = useState<string | null>(null);
