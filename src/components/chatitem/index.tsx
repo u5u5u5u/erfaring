@@ -1,21 +1,25 @@
 import ChatIcon from "../ChatIcon";
 import ChatSpeechBubble from "../ChatSpeechBubble";
 import styles from "./index.module.css";
+import type { Message } from "@/types/question";
 
 interface ChatItemProps {
-  name: string;
-  icon: string;
-  text: string;
-  time: string;
+  message: Message;
 }
 
-const Chatitem = ({ name, icon, text, time }: ChatItemProps) => {
+const ChatItem = ({ message }: ChatItemProps) => {
   return (
     <div className={styles.chatItem}>
-      <ChatIcon icon={icon} name={name}></ChatIcon>
-      <ChatSpeechBubble text={text} time={time}></ChatSpeechBubble>
+      <ChatIcon
+        icon={message.chat_id?.user_id?.avatar_url || "/globe.svg"}
+        name={message.chat_id?.user_id?.username || "AIメンター"}
+      />
+      <ChatSpeechBubble
+        text={message.content}
+        time={message.createdAt?.toISOString()}
+      />
     </div>
   );
 };
 
-export default Chatitem;
+export default ChatItem;

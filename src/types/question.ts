@@ -3,3 +3,16 @@ export interface Question {
   title: string;
   createdAt?: Date;
 }
+
+export interface Message {
+  id: string;
+  chat_id: {
+    user_id: {
+      avatar_url: string | null;
+      username: string | null;
+    } | null;
+  } | null;
+  role: "user" | "model";
+  content: string;
+  createdAt?: Date;
+}

@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Avatar from "@/components/Avatar";
 import styles from "./index.module.css";
 
 interface ChatIconProps {
@@ -9,13 +9,7 @@ interface ChatIconProps {
 const ChatIcon = ({ icon, name }: ChatIconProps) => {
   return (
     <div className={styles.chatIcon}>
-      <Image
-        className={styles.image}
-        height={50}
-        width={50}
-        alt="ChatIcon"
-        src={icon}
-      ></Image>
+      <Avatar url={icon} size={40} />
       <p className={styles.name}>{name}</p>
     </div>
   );
