@@ -1,11 +1,11 @@
 import styles from "./index.module.css";
 import { Send } from "lucide-react";
 
-interface InputbuttonProps {
+interface InputButtonProps {
   text?: string;
 }
 
-const Inputbutton = ({ text }: InputbuttonProps) => {
+const InputButton = ({ text }: InputButtonProps) => {
   return (
     <div className={styles.inputButton}>
       <input
@@ -22,4 +22,4 @@ const Inputbutton = ({ text }: InputbuttonProps) => {
     </div>
   );
 };
-export default Inputbutton;
+export default InputButton;

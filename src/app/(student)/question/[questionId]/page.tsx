@@ -1,6 +1,6 @@
 import styles from "./page.module.css";
-import ChatItem from "@/components/chatitem";
-import Inputbutton from "@/components/Inputbutton";
+import ChatItem from "@/components/ChatItem";
+import InputButton from "@/components/InputButton";
 import { createClient } from "@/utils/supabase/server";
 
 interface ChatPageProps {
@@ -32,7 +32,7 @@ export default async function ChatPage({ params }: ChatPageProps) {
         </div>
       ))}
       <div className={styles.inputContainer}>
-        <Inputbutton />
+        <InputButton />
       </div>
     </div>
   );
