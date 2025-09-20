@@ -5,6 +5,7 @@ import { FileOutput } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 import styles from "./index.module.css";
+import { submitQuestion } from "./actions";
 
 const QuestionForm = () => {
   const [preview, setPreview] = useState<string | null>(null);
@@ -50,7 +51,7 @@ const QuestionForm = () => {
       </div>
 
       <div className={styles.buttonContainer}>
-        <OrangeButton text="AIメンターに尋ねる" />
+        <OrangeButton text="AIメンターに尋ねる" formAction={submitQuestion} />
       </div>
     </form>
   );
