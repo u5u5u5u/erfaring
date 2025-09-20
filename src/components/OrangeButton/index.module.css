@@ -1,7 +1,8 @@
-.Orange {
+.orange {
   width: 20rem;
   height: 5rem;
   background-color: orange;
+  border: none;
   border-radius: 2.5rem;
   color: white;
   display: flex;

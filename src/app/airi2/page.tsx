@@ -6,9 +6,9 @@ import Quest from "@/components/Quest";
 import ChatIcon from "@/components/ChatIcon";
 import ChatSpeechBubble from "@/components/ChatSpeechBubble";
 import Chatitem from "@/components/chatitem";
-import Orangebutton from "@/components/Orangebutton";
+import OrangeButton from "@/components/OrangeButton";
 import Questditail from "@/components/Questditail";
-import Question from "@/components/Question";
+import QuestionForm from "@/components/QuestionForm";
 import Hashtag from "@/components/Hashtag";
 import Inputbutton from "@/components/Inputbutton";
 
@@ -38,13 +38,13 @@ export default function Home() {
           text="カブトムシ拾った"
           time="2025/9/10/12:17"
         ></Chatitem>
-        <Orangebutton link="/" text="このクエストに挑戦する"></Orangebutton>
+        <OrangeButton text="このクエストに挑戦する"></OrangeButton>
         <Questditail
           title="このクエストのミッション"
           text="地域の魅力を伝えるにはどんな写真を撮ったらいいか考えよう！"
         ></Questditail>
 
-        <Question text="問い" image="画像"></Question>
+        <QuestionForm></QuestionForm>
 
         <Hashtag text="まちづくり"></Hashtag>
 

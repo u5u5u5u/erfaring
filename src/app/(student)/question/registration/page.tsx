@@ -1,18 +1,12 @@
-import Question from "@/components/Question";
+import QuestionForm from "@/components/QuestionForm";
 import styles from "./page.module.css";
-import Orangebutton from "@/components/Orangebutton";
 import PageTitle from "@/components/PageTitle";
 
 export default function QuestionRegistrationPage() {
   return (
     <div className={styles.container}>
       <PageTitle title="新しい問いを追加" />
-      <div className={styles.questionContainer}>
-        <Question text="問い" image="画像" />
-      </div>
-      <div className={styles.buttonContainer}>
-        <Orangebutton text="AIメンターに尋ねる" link={""} />
-      </div>
+      <QuestionForm />
     </div>
   );
 }
