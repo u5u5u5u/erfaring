@@ -59,9 +59,9 @@ export async function POST(request: NextRequest) {
     const response = await chat.sendMessage({
       message: userInput,
     });
+
     const updatedHistory = await chat.getHistory();
-    console.log("Chat history:", updatedHistory);
-    console.log("Chat response:", response.text);
+
     return NextResponse.json({
       response: response.text,
       history: updatedHistory,

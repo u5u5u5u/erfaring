@@ -1,17 +1,16 @@
 import styles from "./index.module.css";
-import Link from "next/link";
 
-interface OrangebuttonProps {
+interface OrangeButtonProps {
   text: string;
-  link: string;
+  formAction?: () => void;
 }
 
-const Orangebutton = ({ text, link }: OrangebuttonProps) => {
+const OrangeButton = ({ text, formAction }: OrangeButtonProps) => {
   return (
-    <div className={styles.Orange}>
-      <Link href={link}>{text}</Link>
-    </div>
+    <button className={styles.orange} formAction={formAction}>
+      {text}
+    </button>
   );
 };
 
-export default Orangebutton;
+export default OrangeButton;
