@@ -1,30 +1,26 @@
-import Image from "next/image";
+import Avatar from "@/components/Avatar";
+import type { UserProfile } from "@/types/user";
+import { User as UserIcon } from "lucide-react";
 import styles from "./index.module.css";
-import { User } from "lucide-react";
-import type { User as UserType } from "@/types/user";
+import { convertGrade } from "@/utils/convertGrade";
 
 interface ProfileIconProps {
-  user: UserType;
+  user: UserProfile | null;
 }
 
 const ProfileIcon = ({ user }: ProfileIconProps) => {
   return (
     <div className={styles.profileIcon}>
-      {user.imageUrl ? (
-        <Image
-          className={styles.image}
-          height={80}
-          width={80}
-          alt="Profile Icon"
-          src={user.imageUrl}
-        />
+      {user?.avatar_url ? (
+        <Avatar uid={user.id} url={user.avatar_url} size={80} />
       ) : (
-        <User className={styles.defaultIcon} size={80} />
+        <UserIcon className={styles.defaultIcon} size={80} />
       )}
       <div className={styles.information}>
-        <h1>{user.name}</h1>
+        <h1>{user?.full_name}</h1>
         <p>
-          {user.schoolId}{user.grade}年生
+          {user?.school_id?.name && user?.school_id?.name}
+          <span>{convertGrade(user?.grade && user?.grade)}年生</span>
         </p>
       </div>
     </div>

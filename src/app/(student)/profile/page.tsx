@@ -1,22 +1,35 @@
-import ProfileIcon from "@/components/ProfileIcon";
-import type { User } from "@/types/user";
 import AcquireNumber from "@/components/AcquireNumber";
-import styles from "./page.module.css";
 import Budge from "@/components/Budge";
-import { BadgeCheck } from "lucide-react";
+import ProfileIcon from "@/components/ProfileIcon";
 import type { Budge as BudgeType } from "@/types/budge";
+import { createClient } from "@/utils/supabase/server";
+import { BadgeCheck } from "lucide-react";
+import styles from "./page.module.css";
 
-export default function ProfilePage() {
-  const dummyUser: User = {
-    id: "1",
-    name: "ゆうご",
-    email: "yugo@example.com",
-    password: "password123",
-    imageUrl: "/vercel.svg",
-    role: "student",
-    schoolId: "〇〇市立〇〇小学校",
-    grade: 5,
-  };
+export default async function ProfilePage() {
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  const { data: rawUserData, error } = await supabase
+    .from("profiles")
+    .select(`id, full_name, avatar_url, school_id(name), grade`)
+    .eq("id", user?.id)
+    .single();
+
+  const userData = rawUserData
+    ? {
+        ...rawUserData,
+        school_id: Array.isArray(rawUserData.school_id)
+          ? rawUserData.school_id[0]
+          : rawUserData.school_id,
+      }
+    : null;
+
+  if (error) {
+    console.error("Error fetching user profile:", error);
+  }
 
   const dummyAcquireNumbers = [
     { name: "quest", number: 12 },
@@ -44,7 +57,7 @@ export default function ProfilePage() {
 
   return (
     <div className={styles.container}>
-      <ProfileIcon user={dummyUser} />
+      <ProfileIcon user={userData} />
       <div className={styles.sections}>
         <div className={styles.section}>
           <p className={styles.title}>これまでの記録</p>

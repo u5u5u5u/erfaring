@@ -2,21 +2,24 @@ import Button from "@/components/Button";
 import Quest from "@/components/Quest";
 import type { quest } from "@/types/quest";
 import type { Question } from "@/types/question";
-import type { User } from "@/types/user";
+import { convertGrade } from "@/utils/convertGrade";
+import { createClient } from "@/utils/supabase/server";
 import { BookOpen, Swords } from "lucide-react";
 import styles from "./page.module.css";
 
-export default function HomePage() {
-  const dummyUser: User = {
-    id: "1",
-    name: "ゆうご",
-    email: "jinnai@example.com",
-    password: "password",
-    imageUrl: "https://example.com/avatar.jpg",
-    role: "student",
-    schoolId: "〇〇市立〇〇小学校",
-    grade: 5,
-  };
+export default async function HomePage() {
+  const supabase = await createClient();
+  const { data } = await supabase.auth.getUser();
+  const { data: userData, error } = await supabase
+    .from("profiles")
+    .select("*, school_id(name)")
+    .eq("id", data?.user?.id)
+    .single();
+  console.log("userData", userData);
+
+  if (error) {
+    console.error("Error fetching user data:", error);
+  }
 
   const dummyQuests: quest[] = [
     {
@@ -47,10 +50,10 @@ export default function HomePage() {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <h1>{dummyUser.name}の学びのあしあと</h1>
+        <h1>{userData?.full_name}の学びのあしあと</h1>
         <p>
-          {dummyUser.schoolId}
-          {dummyUser.grade}年生
+          {userData?.school_id?.name}
+          <span>{convertGrade(userData?.grade)}年生</span>
         </p>
       </div>
       <div className={styles.buttons}>

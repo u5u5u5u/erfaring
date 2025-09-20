@@ -5,9 +5,10 @@ import Sidebar from "../Sidebar";
 
 interface AppLayoutProps {
   children: React.ReactNode;
+  avatarUrl: string;
 }
 
-const AppLayout = ({ children }: AppLayoutProps) => {
+const AppLayout = ({ children, avatarUrl }: AppLayoutProps) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean | null>(null);
 
   useEffect(() => {
@@ -46,7 +47,7 @@ const AppLayout = ({ children }: AppLayoutProps) => {
 
   return (
     <div style={{ display: "flex", minHeight: "100vh" }}>
-      <Sidebar isOpen={isSidebarOpen} onToggle={toggleSidebar} />
+      <Sidebar isOpen={isSidebarOpen} onToggle={toggleSidebar} avatarUrl={avatarUrl} />
       <main
         style={{
           marginLeft: isSidebarOpen ? "240px" : "80px",
