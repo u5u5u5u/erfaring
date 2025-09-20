@@ -1,6 +1,6 @@
 import styles from "./page.module.css";
 import ChatItem from "@/components/ChatItem";
-import InputButton from "@/components/InputButton";
+import MessageForm from "@/components/MessageForm";
 import { createClient } from "@/utils/supabase/server";
 
 interface ChatPageProps {
@@ -13,7 +13,7 @@ export default async function ChatPage({ params }: ChatPageProps) {
 
   const { data: messagesData, error: messagesError } = await supabase
     .from("messages")
-    .select("*, chat_id(user_id(avatar_url, username))")
+    .select("*, chat_id(title, user_id(avatar_url, username))")
     .eq("chat_id", questionId);
 
   console.log("messagesData", messagesData);
@@ -25,14 +25,14 @@ export default async function ChatPage({ params }: ChatPageProps) {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>カブトムシのひみつ</h1>
+      <h1 className={styles.title}>{messagesData[0].chat_id.title}</h1>
       {messagesData.map((message, index) => (
         <div key={message.id} className={styles.questionItem}>
           <ChatItem message={messagesData[index]} />
         </div>
       ))}
       <div className={styles.inputContainer}>
-        <InputButton />
+        <MessageForm chat_id={questionId} />
       </div>
     </div>
   );

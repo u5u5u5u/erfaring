@@ -14,5 +14,5 @@ export interface Message {
   } | null;
   role: "user" | "model";
   content: string;
-  createdAt?: Date;
+  created_at?: Date;
 }

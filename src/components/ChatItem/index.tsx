@@ -16,7 +16,7 @@ const ChatItem = ({ message }: ChatItemProps) => {
       />
       <ChatSpeechBubble
         text={message.content}
-        time={message.createdAt?.toISOString()}
+        time={message.created_at?.toLocaleString() || ""}
       />
     </div>
   );

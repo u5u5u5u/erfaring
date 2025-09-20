@@ -10,7 +10,7 @@ import OrangeButton from "@/components/OrangeButton";
 import Questditail from "@/components/Questditail";
 import QuestionForm from "@/components/QuestionForm";
 import Hashtag from "@/components/Hashtag";
-import InputButton from "@/components/InputButton";
+import MessageForm from "@/components/MessageForm";
 
 export default function Home() {
   return (
