@@ -14,7 +14,7 @@ const ChatItem = ({ message }: ChatItemProps) => {
         icon={
           message.role === "user"
             ? message.chat_id?.user_id?.avatar_url || ""
-            : "/globe.svg"
+            : ""
         }
         name={
           message.role === "user"
