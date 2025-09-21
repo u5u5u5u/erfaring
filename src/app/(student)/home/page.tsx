@@ -15,7 +15,6 @@ export default async function HomePage() {
     .select("*, school_id(name)")
     .eq("id", data?.user?.id)
     .single();
-  console.log("userData", userData);
 
   if (error) {
     console.error("Error fetching user data:", error);

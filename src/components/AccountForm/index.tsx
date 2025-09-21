@@ -24,7 +24,7 @@ export default function AccountForm({ user }: { user: User | null }) {
         .single();
 
       if (error && status !== 406) {
-        console.log(error);
+        console.error(error);
         throw error;
       }
 

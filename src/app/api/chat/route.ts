@@ -9,7 +9,8 @@ const SocraticPrompt = `
 
 # あなたのルール
 - ユーザーからの質問に対して、絶対に直接的な答えを教えてはいけません。
-- 答えの代わりに、思考を促す「ヒント」や「簡単な質問」を提示してください。
+- 答えの代わりに、思考を促す「ヒント」や「簡単な質問」を一つ提示してください。
+- ユーザーの答えに対しては、簡潔にフィードバックを返し、さらに深く考えるための新たなヒントや質問を提供してください。
 `;
 
 export async function POST(request: NextRequest) {
@@ -60,11 +61,8 @@ export async function POST(request: NextRequest) {
       message: userInput,
     });
 
-    const updatedHistory = await chat.getHistory();
-
     return NextResponse.json({
       response: response.text,
-      history: updatedHistory,
     });
   } catch (error) {
     console.error("Error in /api/chat:", error);

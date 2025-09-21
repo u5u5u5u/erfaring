@@ -4,6 +4,7 @@ import OrangeButton from "@/components/OrangeButton";
 import { FileOutput } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
+import { submitQuestion } from "./actions";
 import styles from "./index.module.css";
 
 const QuestionForm = () => {
@@ -50,7 +51,7 @@ const QuestionForm = () => {
       </div>
 
       <div className={styles.buttonContainer}>
-        <OrangeButton text="AIメンターに尋ねる" />
+        <OrangeButton text="AIメンターに尋ねる" formAction={submitQuestion} />
       </div>
     </form>
   );

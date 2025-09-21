@@ -2,7 +2,7 @@ import styles from "./index.module.css";
 
 interface OrangeButtonProps {
   text: string;
-  formAction?: () => void;
+  formAction?: (formData: FormData) => Promise<void>;
 }
 
 const OrangeButton = ({ text, formAction }: OrangeButtonProps) => {

@@ -12,10 +12,18 @@
   padding-bottom: 2rem;
 }
 
+.chatContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow-y: auto;
+  padding-bottom: 100px; 
+}
+
 .inputContainer {
   position: fixed;
   bottom: 20px;
-  width: 100%;
+  width: calc(100% - 40px);
   border-top: 1px solid #ccc;
   padding-top: 30px;
 }

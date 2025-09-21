@@ -8,7 +8,6 @@ interface QuestDetail {
 
 export default async function QuestPage({ params }: QuestDetail) {
   const { questId } = await params;
-  console.log("questId:", questId);
 
   const dummyQuest = {
     id: "airi1",
