@@ -22,6 +22,19 @@ export default async function HomePage() {
     console.error("Error fetching user data:", error);
   }
 
+  const { data: chatsData, error: chatsError } = await supabase
+    .from("chats")
+    .select("*")
+    .eq("user_id", data?.user?.id)
+    .order("created_at", { ascending: false })
+    .limit(3);
+
+  console.log(chatsData);
+
+  if (chatsError) {
+    console.error("Error fetching chat data:", chatsError);
+  }
+
   const dummyQuests: quest[] = [
     {
       id: "1",
@@ -32,19 +45,6 @@ export default async function HomePage() {
       id: "2",
       name: "図書館の人",
       title: "未来の図書館を考えよう",
-    },
-  ];
-
-  const dummyQuestions: Question[] = [
-    {
-      id: "1",
-      title: "なぜ空は青いの？",
-      createdAt: new Date(),
-    },
-    {
-      id: "2",
-      title: "なぜ海は塩辛いの？",
-      createdAt: new Date(),
     },
   ];
 
@@ -82,12 +82,12 @@ export default async function HomePage() {
       <div className={`${styles.section} ${styles.questionSection}`}>
         <h2>最近の問い</h2>
         <ul>
-          {dummyQuestions.map((question) => (
-            <li key={question.id}>
+          {chatsData?.map((chat) => (
+            <li key={chat.id}>
               <Quest
-                theme={question.title}
-                people={question.createdAt?.toLocaleDateString()}
-                link={`/question/${question.id}`}
+                theme={chat.title}
+                people={chat.created_at}
+                link={`/question/${chat.id}`}
               />
             </li>
           ))}
