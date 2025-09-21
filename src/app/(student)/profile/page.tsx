@@ -8,24 +8,15 @@ import styles from "./page.module.css";
 
 export default async function ProfilePage() {
   const supabase = await createClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  const { data } = await supabase.auth.getUser();
 
-  const { data: rawUserData, error } = await supabase
+  const { data: userData, error } = await supabase
     .from("profiles")
-    .select(`id, full_name, avatar_url, school_id(name), grade`)
-    .eq("id", user?.id)
+    .select("*, user_schools(school_id(name), grade)")
+    .eq("id", data?.user?.id)
     .single();
-
-  const userData = rawUserData
-    ? {
-        ...rawUserData,
-        school_id: Array.isArray(rawUserData.school_id)
-          ? rawUserData.school_id[0]
-          : rawUserData.school_id,
-      }
-    : null;
+  
+  console.log(userData);
 
   if (error) {
     console.error("Error fetching user profile:", error);
