@@ -1,7 +1,6 @@
 import Button from "@/components/Button";
 import Quest from "@/components/Quest";
 import type { quest } from "@/types/quest";
-import type { Question } from "@/types/question";
 import { convertGrade } from "@/utils/convertGrade";
 import { createClient } from "@/utils/supabase/server";
 import { BookOpen, Swords } from "lucide-react";
@@ -22,6 +21,17 @@ export default async function HomePage() {
     console.error("Error fetching user data:", error);
   }
 
+  const { data: chatsData, error: chatsError } = await supabase
+    .from("chats")
+    .select("*")
+    .eq("user_id", data?.user?.id)
+    .order("created_at", { ascending: false })
+    .limit(3);
+
+  if (chatsError) {
+    console.error("Error fetching chat data:", chatsError);
+  }
+
   const dummyQuests: quest[] = [
     {
       id: "1",
@@ -32,19 +42,6 @@ export default async function HomePage() {
       id: "2",
       name: "図書館の人",
       title: "未来の図書館を考えよう",
-    },
-  ];
-
-  const dummyQuestions: Question[] = [
-    {
-      id: "1",
-      title: "なぜ空は青いの？",
-      createdAt: new Date(),
-    },
-    {
-      id: "2",
-      title: "なぜ海は塩辛いの？",
-      createdAt: new Date(),
     },
   ];
 
@@ -71,6 +68,7 @@ export default async function HomePage() {
           {dummyQuests.map((quest) => (
             <li key={quest.id}>
               <Quest
+                type="quest"
                 theme={quest.title}
                 people={quest.name}
                 link={`/quest/${quest.id}`}
@@ -82,12 +80,13 @@ export default async function HomePage() {
       <div className={`${styles.section} ${styles.questionSection}`}>
         <h2>最近の問い</h2>
         <ul>
-          {dummyQuestions.map((question) => (
-            <li key={question.id}>
+          {chatsData?.map((chat) => (
+            <li key={chat.id}>
               <Quest
-                theme={question.title}
-                people={question.createdAt?.toLocaleDateString()}
-                link={`/question/${question.id}`}
+                type="question"
+                theme={chat.title}
+                people={chat.created_at}
+                link={`/question/${chat.id}`}
               />
             </li>
           ))}

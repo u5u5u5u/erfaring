@@ -20,6 +20,7 @@ export default function QuestionPage() {
           {dummyQuests.map((quest) => (
             <li key={quest.id} className={styles.questItem}>
               <Quest
+                type="quest"
                 theme={quest.title}
                 people={quest.name}
                 link={`/quest/${quest.id}`}
