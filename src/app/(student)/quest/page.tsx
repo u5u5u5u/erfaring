@@ -9,7 +9,6 @@ export default async function QuestionPage() {
   const { data: questsData, error: questsError } = await supabase
     .from("quests")
     .select("*, organization_id(name)");
-  console.log(questsData);
 
   if (questsError) {
     console.error("Error fetching quests:", questsError);
