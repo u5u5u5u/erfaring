@@ -15,8 +15,6 @@ export default async function ProfilePage() {
     .select("*, user_schools(school_id(name), grade)")
     .eq("id", data?.user?.id)
     .single();
-  
-  console.log(userData);
 
   if (error) {
     console.error("Error fetching user profile:", error);

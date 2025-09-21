@@ -34,7 +34,7 @@ export default async function HomePage() {
 
   const { data: questsData, error: questsError } = await supabase
     .from("quest_assignments")
-    .select("*, quest_id(title, organization_id(name))")
+    .select("*, quest_id(id, title, organization_id(name))")
     .eq("user_id", data?.user?.id);
 
   if (questsError) {
@@ -61,13 +61,13 @@ export default async function HomePage() {
       <div className={`${styles.section} ${styles.questSection}`}>
         <h2>参加中のクエスト</h2>
         <ul>
-          {questsData?.map((quest, index) => (
-            <li key={index}>
+          {questsData?.map((quest) => (
+            <li key={quest.quest_id.id}>
               <Quest
                 type="quest"
                 theme={quest.quest_id.title}
                 people={quest.quest_id.organization_id.name}
-                link={`/quest/${quest.id}`}
+                link={`/quest/${quest.quest_id.id}`}
               />
             </li>
           ))}
