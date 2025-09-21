@@ -18,6 +18,7 @@ export default function Home() {
           クエストに挑戦
         </Button>
         <Quest
+          type="quest"
           color="white"
           theme="未来の給食メニューを考えよう"
           people="栄養士　○○さん"
