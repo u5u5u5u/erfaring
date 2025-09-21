@@ -14,7 +14,6 @@ export default async function QuestionPage() {
     .select("*")
     .eq("user_id", data?.user?.id)
     .order("created_at", { ascending: false });
-  console.log(chatsData);
 
   if (chatsError) {
     console.error("Error fetching chats:", chatsError);

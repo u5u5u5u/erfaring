@@ -13,6 +13,12 @@ export interface UserProfile {
   id: string;
   full_name?: string | null;
   avatar_url?: string | null;
-  school_id?: { name: string } | null;
-  grade?: number | null;
+  website?: string | null;
+  role: "administration" | "student" | "teacher" | "expert" | "organization";
+  user_schools: {
+    school_id: {
+      name: string;
+    };
+    grade: number;
+  }[];
 }

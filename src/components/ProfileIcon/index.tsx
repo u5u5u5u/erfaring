@@ -19,8 +19,8 @@ const ProfileIcon = ({ user }: ProfileIconProps) => {
       <div className={styles.information}>
         <h1>{user?.full_name}</h1>
         <p>
-          {user?.school_id?.name && user?.school_id?.name}
-          <span>{convertGrade(user?.grade && user?.grade)}年生</span>
+          {user?.user_schools[0]?.school_id.name}
+          <span>{convertGrade(user?.user_schools[0].grade)}年生</span>
         </p>
       </div>
     </div>
