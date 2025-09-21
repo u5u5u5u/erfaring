@@ -1,29 +1,24 @@
-"use client";
-
 import AddQuestionButton from "@/components/AddQuestionButton";
 import PageTitle from "@/components/PageTitle";
 import Quest from "@/components/Quest";
-import type { Question } from "@/types/question";
+import { createClient } from "@/utils/supabase/server";
 import styles from "./page.module.css";
 
-export default function QuestionPage() {
-  const dummyQuestions: Question[] = [
-    { id: "1", title: "空はなぜ青いのか？", createdAt: new Date() },
-    { id: "2", title: "なぜ人は夢を見るのか？", createdAt: new Date() },
-    { id: "3", title: "時間とは何か？", createdAt: new Date() },
-    {
-      id: "4",
-      title: "音楽はどのように感情に影響を与えるのか？",
-      createdAt: new Date(),
-    },
-    { id: "5", title: "なぜ猫は箱が好きなのか？", createdAt: new Date() },
-    {
-      id: "6",
-      title: "宇宙の果てはどうなっているのか？",
-      createdAt: new Date(),
-    },
-    { id: "7", title: "言語はどのように進化するのか？", createdAt: new Date() },
-  ];
+export default async function QuestionPage() {
+  const supabase = await createClient();
+
+  const { data } = await supabase.auth.getUser();
+
+  const { data: chatsData, error: chatsError } = await supabase
+    .from("chats")
+    .select("*")
+    .eq("user_id", data?.user?.id)
+    .order("created_at", { ascending: false });
+  console.log(chatsData);
+
+  if (chatsError) {
+    console.error("Error fetching chats:", chatsError);
+  }
 
   return (
     <div className={styles.container}>
@@ -33,12 +28,12 @@ export default function QuestionPage() {
       </div>
       <div>
         <ul className={styles.questionList}>
-          {dummyQuestions.map((question) => (
-            <li key={question.id} className={styles.questionItem}>
+          {chatsData?.map((chat) => (
+            <li key={chat.id} className={styles.chatItem}>
               <Quest
-                theme={question.title}
-                people={question.createdAt?.toLocaleDateString()}
-                link={`/question/${question.id}`}
+                theme={chat.title}
+                people={chat.created_at}
+                link={`/question/${chat.id}`}
               />
             </li>
           ))}

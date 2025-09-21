@@ -1,7 +1,6 @@
 import Button from "@/components/Button";
 import Quest from "@/components/Quest";
 import type { quest } from "@/types/quest";
-import type { Question } from "@/types/question";
 import { convertGrade } from "@/utils/convertGrade";
 import { createClient } from "@/utils/supabase/server";
 import { BookOpen, Swords } from "lucide-react";
@@ -28,8 +27,6 @@ export default async function HomePage() {
     .eq("user_id", data?.user?.id)
     .order("created_at", { ascending: false })
     .limit(3);
-
-  console.log(chatsData);
 
   if (chatsError) {
     console.error("Error fetching chat data:", chatsError);
