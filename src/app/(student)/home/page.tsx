@@ -9,10 +9,12 @@ import styles from "./page.module.css";
 
 export default async function HomePage() {
   const supabase = await createClient();
+
   const { data } = await supabase.auth.getUser();
+
   const { data: userData, error } = await supabase
     .from("profiles")
-    .select("*, school_id(name)")
+    .select("*, user_schools(school_id(name), grade)")
     .eq("id", data?.user?.id)
     .single();
 
@@ -51,8 +53,8 @@ export default async function HomePage() {
       <div className={styles.header}>
         <h1>{userData?.full_name}の学びのあしあと</h1>
         <p>
-          {userData?.school_id?.name}
-          <span>{convertGrade(userData?.grade)}年生</span>
+          {userData?.user_schools[0]?.school_id.name}
+          <span>{convertGrade(userData?.user_schools[0]?.grade)}年生</span>
         </p>
       </div>
       <div className={styles.buttons}>
