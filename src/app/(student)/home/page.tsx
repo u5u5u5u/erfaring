@@ -32,18 +32,14 @@ export default async function HomePage() {
     console.error("Error fetching chat data:", chatsError);
   }
 
-  const dummyQuests: quest[] = [
-    {
-      id: "1",
-      name: "市役所の人",
-      title: "〇〇市の魅力を発信しよう",
-    },
-    {
-      id: "2",
-      name: "図書館の人",
-      title: "未来の図書館を考えよう",
-    },
-  ];
+  const { data: questsData, error: questsError } = await supabase
+    .from("quest_assignments")
+    .select("*, quest_id(title, organization_id(name))")
+    .eq("user_id", data?.user?.id);
+
+  if (questsError) {
+    console.error("Error fetching quests:", questsError);
+  }
 
   return (
     <div className={styles.container}>
@@ -65,12 +61,12 @@ export default async function HomePage() {
       <div className={`${styles.section} ${styles.questSection}`}>
         <h2>参加中のクエスト</h2>
         <ul>
-          {dummyQuests.map((quest) => (
-            <li key={quest.id}>
+          {questsData?.map((quest, index) => (
+            <li key={index}>
               <Quest
                 type="quest"
-                theme={quest.title}
-                people={quest.name}
+                theme={quest.quest_id.title}
+                people={quest.quest_id.organization_id.name}
                 link={`/quest/${quest.id}`}
               />
             </li>
