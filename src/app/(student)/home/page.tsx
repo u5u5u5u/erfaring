@@ -68,6 +68,7 @@ export default async function HomePage() {
           {dummyQuests.map((quest) => (
             <li key={quest.id}>
               <Quest
+                type="quest"
                 theme={quest.title}
                 people={quest.name}
                 link={`/quest/${quest.id}`}
@@ -82,6 +83,7 @@ export default async function HomePage() {
           {chatsData?.map((chat) => (
             <li key={chat.id}>
               <Quest
+                type="question"
                 theme={chat.title}
                 people={chat.created_at}
                 link={`/question/${chat.id}`}

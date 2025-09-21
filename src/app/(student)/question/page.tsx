@@ -31,6 +31,7 @@ export default async function QuestionPage() {
           {chatsData?.map((chat) => (
             <li key={chat.id} className={styles.chatItem}>
               <Quest
+                type="question"
                 theme={chat.title}
                 people={chat.created_at}
                 link={`/question/${chat.id}`}
