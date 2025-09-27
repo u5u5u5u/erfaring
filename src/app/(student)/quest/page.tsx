@@ -26,6 +26,7 @@ export default async function QuestionPage() {
                 theme={quest.title}
                 people={quest.organization_id.name}
                 link={`/quest/${quest.id}`}
+                status={quest.status}
               />
             </li>
           ))}

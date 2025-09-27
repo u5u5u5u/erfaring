@@ -3,6 +3,7 @@ import OrangeButton from "@/components/OrangeButton";
 import Questditail from "@/components/Questditail";
 import { createClient } from "@/utils/supabase/server";
 import styles from "./page.module.css";
+import Status from "@/components/Status";
 
 interface QuestDetail {
   params: Promise<{ questId: string }>;
@@ -43,7 +44,10 @@ export default async function QuestPage({ params }: QuestDetail) {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <h1>{questData.title}</h1>
+          <h1>
+            {questData.title}
+            <Status status={questData.status} />
+          </h1>
         <p>{questData.organization_id.name}</p>
       </div>
       <div className={styles.hashtags}>
