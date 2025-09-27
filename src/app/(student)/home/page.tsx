@@ -1,6 +1,5 @@
 import Button from "@/components/Button";
 import Quest from "@/components/Quest";
-import type { quest } from "@/types/quest";
 import { convertGrade } from "@/utils/convertGrade";
 import { createClient } from "@/utils/supabase/server";
 import { BookOpen, Swords } from "lucide-react";
