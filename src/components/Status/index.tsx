@@ -1,7 +1,7 @@
 import styles from "./index.module.css";
 
 interface StatusProps {
-  status: "draft" | "open" | "closed" | "archived";
+  status?: "draft" | "open" | "closed" | "archived";
 }
 
 const Status = ({ status }: StatusProps) => {
@@ -21,11 +21,11 @@ const Status = ({ status }: StatusProps) => {
   return (
     <span
       style={{
-        backgroundColor: statusColors[status],
+        backgroundColor: statusColors[status || "archived"],
       }}
       className={styles.status}
     >
-      {statusText[status]}
+      {statusText[status || "archived"]}
     </span>
   );
 };
