@@ -30,6 +30,17 @@ export default async function ProfilePage() {
     console.error("Error fetching clear quests count:", clearQuestsError);
   }
 
+  const { count: clearQuestionsCount, error: clearQuestionsError } =
+    await supabase
+      .from("chats")
+      .select("*", { count: "exact" })
+      .eq("user_id", data?.user?.id)
+      .eq("is_solved", "true");
+
+  if (clearQuestionsError) {
+    console.error("Error fetching clear questions:", clearQuestionsError);
+  }
+
   const dummyBudges: BudgeType[] = [
     { id: "1", name: "探究マスター", icon: "Search" },
     { id: "2", name: "質問王", icon: "MessageCircleQuestionMark" },
@@ -56,6 +67,7 @@ export default async function ProfilePage() {
           <p className={styles.title}>これまでの記録</p>
           <div className={styles.items}>
             <AcquireNumber name="quest" number={clearQuestsCount || 0} />
+            <AcquireNumber name="question" number={clearQuestionsCount || 0} />
           </div>
         </div>
         <div className={styles.section}>
