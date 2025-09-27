@@ -1,14 +1,18 @@
 import styles from "./index.module.css";
+import DynamicIcon from "../DynamicIcon";
+import dynamicIconImports from "lucide-react/dynamicIconImports";
 
+type IconName = keyof typeof dynamicIconImports;
 interface BudgeProps {
   name: string;
-  icon: React.ReactNode;
+  icon: IconName;
+  color?: string;
 }
 
-const Budge = ({ name, icon }: BudgeProps) => {
+const Budge = ({ name, icon, color }: BudgeProps) => {
   return (
     <div className={styles.budge}>
-      {icon}
+      <DynamicIcon name={icon} color={color} className={styles.icon} />
       <p className={styles.name}>{name}</p>
     </div>
   );
