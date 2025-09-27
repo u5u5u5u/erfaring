@@ -41,6 +41,15 @@ export default async function ProfilePage() {
     console.error("Error fetching clear questions:", clearQuestionsError);
   }
 
+  const { count: badgeCount, error: badgeError } = await supabase
+    .from("user_badges")
+    .select("*", { count: "exact" })
+    .eq("user_id", data?.user?.id);
+
+  if (badgeError) {
+    console.error("Error fetching budge count:", badgeError);
+  }
+
   const dummyBudges: BudgeType[] = [
     { id: "1", name: "探究マスター", icon: "Search" },
     { id: "2", name: "質問王", icon: "MessageCircleQuestionMark" },
@@ -68,6 +77,7 @@ export default async function ProfilePage() {
           <div className={styles.items}>
             <AcquireNumber name="quest" number={clearQuestsCount || 0} />
             <AcquireNumber name="question" number={clearQuestionsCount || 0} />
+            <AcquireNumber name="budge" number={badgeCount || 0} />
           </div>
         </div>
         <div className={styles.section}>
