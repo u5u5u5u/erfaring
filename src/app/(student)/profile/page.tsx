@@ -34,12 +34,15 @@ export default async function ProfilePage() {
     console.error("Error fetching clear quests count:", clearQuestsError);
   }
 
-  const { count: clearQuestionsCount, error: clearQuestionsError } =
-    await supabase
-      .from("chats")
-      .select("*", { count: "exact" })
-      .eq("user_id", data?.user?.id)
-      .eq("is_solved", "true");
+  const {
+    data: clearQuestionsData,
+    count: clearQuestionsCount,
+    error: clearQuestionsError,
+  } = await supabase
+    .from("chats")
+    .select("*", { count: "exact" })
+    .eq("user_id", data?.user?.id)
+    .eq("is_solved", "true");
 
   if (clearQuestionsError) {
     console.error("Error fetching clear questions:", clearQuestionsError);
@@ -58,12 +61,6 @@ export default async function ProfilePage() {
     { id: "1", name: "探究マスター", icon: "Search" },
     { id: "2", name: "質問王", icon: "MessageCircleQuestionMark" },
     { id: "3", name: "回答の達人", icon: "HandHelping" },
-  ];
-
-  const dummyClearQuestions = [
-    { id: "1", title: "なぜ空は青いのか？" },
-    { id: "2", title: "なぜ人は夢を見るのか？" },
-    { id: "3", title: "時間とは何か？" },
   ];
 
   return (
@@ -103,9 +100,9 @@ export default async function ProfilePage() {
         <div className={styles.section}>
           <p className={styles.title}>解決した問い</p>
           <div className={styles.list}>
-            {dummyClearQuestions.map((questions) => (
-              <li key={questions.id} className={styles.questions}>
-                {questions.title}
+            {clearQuestionsData?.map((question) => (
+              <li key={question.id} className={styles.questions}>
+                {question.title}
               </li>
             ))}
           </div>
