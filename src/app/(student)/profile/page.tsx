@@ -20,11 +20,15 @@ export default async function ProfilePage() {
     console.error("Error fetching user profile:", error);
   }
 
-  const dummyAcquireNumbers = [
-    { name: "quest", number: 12 },
-    { name: "question", number: 34 },
-    { name: "budge", number: 5 },
-  ] as const;
+  const { count: clearQuestsCount, error: clearQuestsError } = await supabase
+    .from("quest_assignments")
+    .select("*, quests!inner(status)", { count: "exact" })
+    .eq("user_id", data?.user?.id)
+    .eq("quests.status", "archived");
+
+  if (clearQuestsError) {
+    console.error("Error fetching clear quests count:", clearQuestsError);
+  }
 
   const dummyBudges: BudgeType[] = [
     { id: "1", name: "探究マスター", icon: "Search" },
@@ -51,13 +55,7 @@ export default async function ProfilePage() {
         <div className={styles.section}>
           <p className={styles.title}>これまでの記録</p>
           <div className={styles.items}>
-            {dummyAcquireNumbers.map((item) => (
-              <AcquireNumber
-                key={item.name}
-                name={item.name}
-                number={item.number}
-              />
-            ))}
+            <AcquireNumber name="quest" number={clearQuestsCount || 0} />
           </div>
         </div>
         <div className={styles.section}>
