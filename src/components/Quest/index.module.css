@@ -10,6 +10,12 @@
   padding: 0 40px;
 }
 
+.infoHead {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .theme {
   font-size: 2rem;
   font-weight: bold;
