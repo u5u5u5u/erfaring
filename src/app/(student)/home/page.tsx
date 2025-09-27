@@ -54,7 +54,7 @@ export default async function HomePage() {
         <Button color="#2463EB" icon={<Swords size={30} />} link="/quest">
           クエストに挑戦
         </Button>
-        <Button color="#21C55D" icon={<BookOpen size={30} />} link="/question">
+        <Button color="#21C55D" icon={<BookOpen size={30} />} link="/question/registration">
           問いを探究
         </Button>
       </div>
