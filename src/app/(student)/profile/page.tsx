@@ -20,9 +20,13 @@ export default async function ProfilePage() {
     console.error("Error fetching user profile:", error);
   }
 
-  const { count: clearQuestsCount, error: clearQuestsError } = await supabase
+  const {
+    data: clearQuestData,
+    count: clearQuestsCount,
+    error: clearQuestsError,
+  } = await supabase
     .from("quest_assignments")
-    .select("*, quests!inner(status)", { count: "exact" })
+    .select("*, quests!inner(title, status)", { count: "exact" })
     .eq("user_id", data?.user?.id)
     .eq("quests.status", "archived");
 
@@ -54,12 +58,6 @@ export default async function ProfilePage() {
     { id: "1", name: "探究マスター", icon: "Search" },
     { id: "2", name: "質問王", icon: "MessageCircleQuestionMark" },
     { id: "3", name: "回答の達人", icon: "HandHelping" },
-  ];
-
-  const dummyClearQuests = [
-    { id: "1", title: "地球温暖化の原因と対策" },
-    { id: "2", title: "日本の歴史と文化" },
-    { id: "3", title: "宇宙の神秘" },
   ];
 
   const dummyClearQuestions = [
@@ -95,9 +93,9 @@ export default async function ProfilePage() {
         <div className={styles.section}>
           <p className={styles.title}>クリアしたクエスト</p>
           <div className={styles.list}>
-            {dummyClearQuests.map((quest) => (
-              <li key={quest.id} className={styles.quest}>
-                {quest.title}
+            {clearQuestData?.map((quest) => (
+              <li key={quest.quest_id} className={styles.quest}>
+                {quest.quests.title}
               </li>
             ))}
           </div>
