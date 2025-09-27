@@ -48,20 +48,19 @@ export default async function ProfilePage() {
     console.error("Error fetching clear questions:", clearQuestionsError);
   }
 
-  const { count: badgeCount, error: badgeError } = await supabase
+  const {
+    data: badgeData,
+    count: badgeCount,
+    error: badgeError,
+  } = await supabase
     .from("user_badges")
-    .select("*", { count: "exact" })
+    .select("*, badge_id(id, name, icon)", { count: "exact" })
     .eq("user_id", data?.user?.id);
+  console.log(" badgeData", badgeData);
 
   if (badgeError) {
     console.error("Error fetching budge count:", badgeError);
   }
-
-  const dummyBudges: BudgeType[] = [
-    { id: "1", name: "探究マスター", icon: "Search" },
-    { id: "2", name: "質問王", icon: "MessageCircleQuestionMark" },
-    { id: "3", name: "回答の達人", icon: "HandHelping" },
-  ];
 
   return (
     <div className={styles.container}>
@@ -78,10 +77,10 @@ export default async function ProfilePage() {
         <div className={styles.section}>
           <p className={styles.title}>獲得したバッジ</p>
           <div className={styles.items}>
-            {dummyBudges.map((budge) => (
+            {badgeData?.map((budge) => (
               <Budge
-                key={budge.id}
-                name={budge.name}
+                key={budge.badge_id.id}
+                name={budge.badge_id.name}
                 icon={<BadgeCheck size={48} color="#FFD700" />}
               />
             ))}
