@@ -53,7 +53,7 @@ export default async function ProfilePage() {
     error: badgeError,
   } = await supabase
     .from("user_badges")
-    .select("*, badge_id(id, name, icon)", { count: "exact" })
+    .select("*, badge_id(id, name, icon, color)", { count: "exact" })
     .eq("user_id", data?.user?.id);
   console.log(" badgeData", badgeData);
 
@@ -80,7 +80,8 @@ export default async function ProfilePage() {
               <Budge
                 key={budge.badge_id.id}
                 name={budge.badge_id.name}
-                icon={<BadgeCheck size={48} color="#FFD700" />}
+                icon={budge.badge_id.icon}
+                color={budge.badge_id.color}
               />
             ))}
           </div>
