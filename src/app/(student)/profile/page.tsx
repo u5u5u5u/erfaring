@@ -1,7 +1,6 @@
 import AcquireNumber from "@/components/AcquireNumber";
 import Budge from "@/components/Budge";
 import ProfileIcon from "@/components/ProfileIcon";
-import type { Budge as BudgeType } from "@/types/budge";
 import { createClient } from "@/utils/supabase/server";
 import { BadgeCheck } from "lucide-react";
 import styles from "./page.module.css";
