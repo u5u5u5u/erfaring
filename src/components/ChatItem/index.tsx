@@ -2,6 +2,7 @@ import ChatIcon from "../ChatIcon";
 import ChatSpeechBubble from "../ChatSpeechBubble";
 import styles from "./index.module.css";
 import type { Message } from "@/types/question";
+import { formatDateTime } from "@/utils/formatDateTime";
 
 interface ChatItemProps {
   message: Message;
@@ -24,7 +25,7 @@ const ChatItem = ({ message }: ChatItemProps) => {
       />
       <ChatSpeechBubble
         text={message.content}
-        time={message.created_at?.toLocaleString() || ""}
+        time={formatDateTime(message.created_at?.toLocaleString() || "")}
       />
     </div>
   );
