@@ -55,7 +55,6 @@ export default async function ProfilePage() {
     .from("user_badges")
     .select("*, badge_id(id, name, icon, color)", { count: "exact" })
     .eq("user_id", data?.user?.id);
-  console.log(" badgeData", badgeData);
 
   if (badgeError) {
     console.error("Error fetching budge count:", badgeError);

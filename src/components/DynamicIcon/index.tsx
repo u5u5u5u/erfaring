@@ -24,7 +24,6 @@ type DynamicIconProps = {
 };
 
 const DynamicIcon = memo(({ name, color, ...props }: DynamicIconProps) => {
-  console.log("DynamicIcon name:", name);
   const Icon = icons_components[name];
   if (!Icon) return null;
   return <Icon size={48} color={color} {...props} />;
