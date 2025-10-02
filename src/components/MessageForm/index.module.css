@@ -1,10 +1,10 @@
 .messageForm {
   display: flex;
-  align-items: center;
   gap: 10px;
 
   .form {
     width: 80%;
+    max-width: 700px;
     border-radius: 4rem;
     font-size: 2.5rem;
     border: gray solid;
