@@ -4,24 +4,15 @@ import Questditail from "@/components/Questditail";
 import { createClient } from "@/utils/supabase/server";
 import styles from "./page.module.css";
 import Status from "@/components/Status";
+import { getQuestData } from "./actions";
 
 interface QuestDetail {
   params: Promise<{ questId: string }>;
 }
 
 export default async function QuestPage({ params }: QuestDetail) {
-  const supabase = await createClient();
   const { questId } = await params;
-
-  const { data: questData, error: questError } = await supabase
-    .from("quests")
-    .select("*, organization_id(name), quest_tags(tag_id(name))")
-    .eq("id", questId)
-    .single();
-
-  if (questError) {
-    console.error("Error fetching quest:", questError);
-  }
+  const questData = await getQuestData(questId);
 
   const handleQuestAccept = async () => {
     "use server";
@@ -44,10 +35,10 @@ export default async function QuestPage({ params }: QuestDetail) {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-          <h1>
-            {questData.title}
-            <Status status={questData.status} />
-          </h1>
+        <h1>
+          {questData.title}
+          <Status status={questData.status} />
+        </h1>
         <p>{questData.organization_id.name}</p>
       </div>
       <div className={styles.hashtags}>
@@ -62,7 +53,7 @@ export default async function QuestPage({ params }: QuestDetail) {
           title="このクエストのミッション"
           text={questData.description}
         />
-        <Questditail title="達人からのヒント" text={""} />
+        {/* <Questditail title="達人からのヒント" text={""} /> */}
       </div>
       <div className={styles.buttonContainer}>
         <OrangeButton
