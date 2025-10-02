@@ -62,7 +62,7 @@ export default async function QuestPage({ params }: QuestDetail) {
           title="このクエストのミッション"
           text={questData.description}
         />
-        <Questditail title="達人からのヒント" text={""} />
+        {/* <Questditail title="達人からのヒント" text={""} /> */}
       </div>
       <div className={styles.buttonContainer}>
         <OrangeButton
