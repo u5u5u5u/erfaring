@@ -5,13 +5,18 @@
   border: black solid;
   padding: 2rem;
 
-  h1 {
+  div {
     font-size: 2rem;
     font-weight: normal;
+    line-height: 1.30;
     margin-bottom: 10px;
+
+    ul {
+      margin-left: 20px;
+    }
   }
 
-  p {
+  .time {
     font-size: 1.6rem;
     text-align: right;
     padding-right: 20px;
