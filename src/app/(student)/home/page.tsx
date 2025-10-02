@@ -1,45 +1,16 @@
 import Button from "@/components/Button";
 import Quest from "@/components/Quest";
 import { convertGrade } from "@/utils/convertGrade";
+import { getUser, getUserProfile } from "@/utils/supabase/actions";
 import { createClient } from "@/utils/supabase/server";
 import { BookOpen, Swords } from "lucide-react";
+import { getChatsData, getQuestsData } from "./actions";
 import styles from "./page.module.css";
 
 export default async function HomePage() {
-  const supabase = await createClient();
-
-  const { data } = await supabase.auth.getUser();
-
-  const { data: userData, error } = await supabase
-    .from("profiles")
-    .select("*, user_schools(school_id(name), grade)")
-    .eq("id", data?.user?.id)
-    .single();
-
-  if (error) {
-    console.error("Error fetching user data:", error);
-  }
-
-  const { data: chatsData, error: chatsError } = await supabase
-    .from("chats")
-    .select("*")
-    .eq("user_id", data?.user?.id)
-    .order("created_at", { ascending: false })
-    .limit(3);
-
-  if (chatsError) {
-    console.error("Error fetching chat data:", chatsError);
-  }
-
-  const { data: questsData, error: questsError } = await supabase
-    .from("quest_assignments")
-    .select("*, quest_id(id, title, organization_id(name), status)")
-    .eq("user_id", data?.user?.id);
-  console.log(" questsData", questsData);
-
-  if (questsError) {
-    console.error("Error fetching quests:", questsError);
-  }
+  const userData = await getUserProfile();
+  const chatsData = await getChatsData();
+  const questsData = await getQuestsData();
 
   return (
     <div className={styles.container}>
