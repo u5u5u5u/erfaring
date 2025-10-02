@@ -1,8 +1,7 @@
 import Button from "@/components/Button";
 import Quest from "@/components/Quest";
 import { convertGrade } from "@/utils/convertGrade";
-import { getUser, getUserProfile } from "@/utils/supabase/actions";
-import { createClient } from "@/utils/supabase/server";
+import { getUserProfile } from "@/utils/supabase/actions";
 import { BookOpen, Swords } from "lucide-react";
 import { getChatsData, getQuestsData } from "./actions";
 import styles from "./page.module.css";

@@ -1,4 +1,5 @@
 import styles from "./index.module.css";
+import ReactMarkdown from "react-markdown";
 
 interface ChatSpeechBubbleProps {
   text?: string;
@@ -8,8 +9,10 @@ interface ChatSpeechBubbleProps {
 const ChatSpeechBubble = ({ text, time }: ChatSpeechBubbleProps) => {
   return (
     <div className={styles.speechBubble}>
-      <h1>{text}</h1>
-      <p>{time}</p>
+      <div>
+        <ReactMarkdown>{text}</ReactMarkdown>
+      </div>
+      <p className={styles.time}>{time}</p>
     </div>
   );
 };
