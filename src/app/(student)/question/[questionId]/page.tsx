@@ -14,7 +14,8 @@ export default async function ChatPage({ params }: ChatPageProps) {
   const { data: messagesData, error: messagesError } = await supabase
     .from("messages")
     .select("*, chat_id(title, user_id(avatar_url, username))")
-    .eq("chat_id", questionId);
+    .eq("chat_id", questionId)
+    .order("created_at", { ascending: true });
 
   if (messagesError) {
     console.error("Error fetching messages:", messagesError);

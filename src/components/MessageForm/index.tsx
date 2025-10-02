@@ -1,6 +1,6 @@
-import styles from "./index.module.css";
 import { Send } from "lucide-react";
 import { sendMessage } from "./actions";
+import styles from "./index.module.css";
 
 interface MessageFormProps {
   chat_id?: string;
