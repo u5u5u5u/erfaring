@@ -37,7 +37,8 @@ export async function getQuestsData() {
   const { data: questsData, error: questsError } = await supabase
     .from("quest_assignments")
     .select("*, quest_id(id, title, organization_id(name), status)")
-    .eq("user_id", user?.id);
+    .eq("user_id", user?.id)
+    .eq("quest_id.status", "open");
 
   if (questsError) {
     console.error("Error fetching quests:", questsError);

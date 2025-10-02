@@ -35,17 +35,20 @@ export default async function HomePage() {
       <div className={`${styles.section} ${styles.questSection}`}>
         <h2>参加中のクエスト</h2>
         <ul>
-          {questsData?.map((quest) => (
-            <li key={quest.quest_id.id}>
-              <Quest
-                type="quest"
-                theme={quest.quest_id.title}
-                people={quest.quest_id.organization_id.name}
-                link={`/quest/${quest.quest_id.id}`}
-                status={quest.quest_id.status}
-              />
-            </li>
-          ))}
+          {questsData?.map(
+            (quest) =>
+              quest.quest_id && (
+                <li key={quest.quest_id.id}>
+                  <Quest
+                    type="quest"
+                    theme={quest.quest_id.title}
+                    people={quest.quest_id.organization_id.name}
+                    link={`/quest/${quest.quest_id.id}`}
+                    status={quest.quest_id.status}
+                  />
+                </li>
+              )
+          )}
         </ul>
       </div>
       <div className={`${styles.section} ${styles.questionSection}`}>
