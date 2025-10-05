@@ -5,37 +5,18 @@ import { createClient } from "@/utils/supabase/server";
 import styles from "./page.module.css";
 import Status from "@/components/atoms/Status";
 import { getQuestData } from "./actions";
-import { useState, useEffect } from "react";
 
 interface QuestDetail {
   params: Promise<{ questId: string }>;
 }
 
-interface QuestData {
-  title: string;
-  status: "draft" | "open" | "closed" | "archived";
-  organization_id: { name: string };
-  quest_tags: { tag_id: { name: string } }[];
-  description: string;
-}
-
-export default function QuestPage({ params }: QuestDetail) {
-  const [questId, setQuestId] = useState<string>("");
-  const [questData, setQuestData] = useState<QuestData | null>(null);
-  const [isAccepted, setIsAccepted] = useState(false);
-
-  useEffect(() => {
-    const initializeData = async () => {
-      const { questId: id } = await params;
-      setQuestId(id);
-      const data = await getQuestData(id);
-      setQuestData(data);
-    };
-    initializeData();
-  }, [params]);
+export default async function QuestPage({ params }: QuestDetail) {
+  const { questId } = await params;
+  const questData = await getQuestData(questId);
 
   const handleQuestAccept = async () => {
-    const supabase = createClient();
+    "use server";
+    const supabase = await createClient();
     const {
       data: { user },
     } = await supabase.auth.getUser();
@@ -47,15 +28,9 @@ export default function QuestPage({ params }: QuestDetail) {
 
       if (error) {
         console.error("Error accepting quest:", error);
-      } else {
-        setIsAccepted(true);
       }
     }
   };
-
-  if (!questData) {
-    return <div>Loading...</div>;
-  }
 
   return (
     <div className={styles.container}>
@@ -80,26 +55,12 @@ export default function QuestPage({ params }: QuestDetail) {
         />
         {/* <QuestDetail title="達人からのヒント" text={""} /> */}
       </div>
-
-      {!isAccepted ? (
-        <div className={styles.buttonContainer}>
-          <OrangeButton
-            text="このクエストに挑戦する"
-            onClick={handleQuestAccept}
-          />
-        </div>
-      ) : (
-        <div className={styles.challengeSection}>
-          <div className={styles.buttonGrid}>
-            <OrangeButton
-              text="達人とチャットする"
-              onClick={() => (window.location.href = `/quest/${questId}/chat`)}
-            />
-            <OrangeButton text="進捗報告" onClick={() => {}} />
-            <OrangeButton text="成果報告" onClick={() => {}} />
-          </div>
-        </div>
-      )}
+      <div className={styles.buttonContainer}>
+        <OrangeButton
+          text="このクエストに挑戦する"
+          onClick={handleQuestAccept}
+        />
+      </div>
     </div>
   );
 }
