@@ -64,17 +64,15 @@ const QuestActions = ({ questId, isParticipating }: QuestActionsProps) => {
   return (
     <>
       <div className={styles.challengeSection}>
-        <div className={styles.challengeItems}>
-          <button className={styles.actionButton} onClick={handleAddNote}>
-            <span>探求ノートを追加</span>
-          </button>
-          <button className={styles.actionButton} onClick={handleShowHint}>
-            <span>ヒントを見る</span>
-          </button>
-          <button className={styles.actionButton} onClick={handleShowMission}>
-            <span>ミッションに挑む</span>
-          </button>
-        </div>
+        <button className={styles.actionButton} onClick={handleAddNote}>
+          探求ノートを追加
+        </button>
+        <button className={styles.actionButton} onClick={handleShowHint}>
+          ヒントを見る
+        </button>
+        <button className={styles.actionButton} onClick={handleShowMission}>
+          ミッションに挑む
+        </button>
       </div>
 
       <HintModal
