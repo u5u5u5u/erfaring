@@ -52,11 +52,6 @@
   justify-content: center;
 }
 
-.closeButton:hover {
-  background: #f0f0f0;
-  color: #333;
-}
-
 .content {
   line-height: 1.6;
 }
@@ -110,7 +105,6 @@
   cursor: pointer;
   font-size: 1.6rem;
   font-weight: bold;
-  transition: all 0.2s ease;
 }
 
 .submitButton {
@@ -122,5 +116,4 @@
   cursor: pointer;
   font-size: 1.6rem;
   font-weight: bold;
-  transition: all 0.2s ease;
 }
