@@ -5,6 +5,29 @@ import { getUser } from "@/utils/supabase/actions";
 
 export async function getQuestsData(limit?: number) {
   const supabase = await createClient();
+
+  let query = supabase
+    .from("quests")
+    .select("*, organization_id(name)")
+    .eq("status", "open")
+    .order("created_at", { ascending: false });
+
+  if (limit) {
+    query = query.limit(limit);
+  }
+
+  const { data: questsData, error: questsError } = await query;
+
+  if (questsError) {
+    console.error("Error fetching quest data:", questsError);
+    return null;
+  }
+
+  return questsData;
+}
+
+export async function getAssignedQuestsData(limit?: number) {
+  const supabase = await createClient();
   const user = await getUser();
 
   if (!user) {
@@ -40,7 +63,7 @@ export async function getClearQuestsCount() {
     return 0;
   }
 
-  const {  count, error } = await supabase
+  const { count, error } = await supabase
     .from("quest_assignments")
     .select("quest_id, quests!inner()", { count: "exact" })
     .eq("user_id", user?.id)
