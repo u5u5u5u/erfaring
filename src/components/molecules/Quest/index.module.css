@@ -1,0 +1,38 @@
+.quest {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100px;
+  width: 100%;
+  max-width: 840px;
+  border-radius: 15px;
+  border: gray solid;
+  padding: 0 40px;
+}
+
+.infoHead {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.theme {
+  font-size: 2rem;
+  font-weight: bold;
+  color: black;
+}
+
+.people {
+  font-size: 1.5rem;
+  color: gray;
+  padding-top: 10px;
+}
+
+.link {
+  color: blue;
+  text-align: right;
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+}
+

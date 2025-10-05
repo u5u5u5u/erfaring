@@ -1,42 +1,45 @@
+import { checkUserQuestParticipation, getQuestData } from "@/actions/quest";
+import Hashtag from "@/components/atoms/Hashtag";
+import Status from "@/components/atoms/Status";
+import QuestDetail from "@/components/molecules/QuestDetail";
+import QuestActions from "@/components/template/QuestActions";
 import styles from "./page.module.css";
-import Questditail from "@/components/Questditail";
-import Hashtag from "@/components/Hashtag";
 
-interface QuestDetail {
+interface QuestPageProps {
   params: Promise<{ questId: string }>;
 }
 
-export default async function QuestPage({ params }: QuestDetail) {
+export default async function QuestPage({ params }: QuestPageProps) {
   const { questId } = await params;
-  console.log("questId:", questId);
-
-  const dummyQuest = {
-    id: "airi1",
-    name: "○×市役所",
-    title: "地域の魅力を写真で伝えよう！",
-    HashTags: ["まちづくり", "アイデア"],
-    mission: "地域の魅力を伝えるにはどんな写真を撮ったらいいか考えよう！",
-    hint: "住んでいる地域で有名なものは何かな？",
-  };
+  const questData = await getQuestData(questId);
+  const isParticipating = await checkUserQuestParticipation(questId);
 
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <h1>{dummyQuest.title}</h1>
-        <p>{dummyQuest.name}</p>
+        <h1>
+          {questData.title}
+          <Status status={questData.status} />
+        </h1>
+        <p>{questData.organization_id.name}</p>
       </div>
       <div className={styles.hashtags}>
-        {dummyQuest.HashTags.map((tag, index) => (
-          <Hashtag key={index} text={tag} />
-        ))}
+        {questData.quest_tags.map(
+          (tag: { tag_id: { name: string } }, index: number) => (
+            <Hashtag key={index} text={tag.tag_id.name} />
+          )
+        )}
       </div>
       <div className={styles.questDetails}>
-        <Questditail
+        <QuestDetail
           title="このクエストのミッション"
-          text={dummyQuest.mission}
+          text={questData.description}
         />
-        <Questditail title="達人からのヒント" text={dummyQuest.hint} />
       </div>
+      <QuestActions
+        questId={questId}
+        isParticipating={isParticipating || false}
+      />
     </div>
   );
 }
