@@ -36,16 +36,6 @@
   gap: 20px;
 }
 
-.buttonContainer {
-  display: flex;
-  justify-content: start;
-  margin-top: 30px;
-}
-
-.challengeSection {
-  margin-top: 30px;
-}
-
 .buttonGrid {
   display: flex;
   gap: 20px;
