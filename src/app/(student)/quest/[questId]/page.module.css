@@ -35,3 +35,33 @@
   flex-direction: column;
   gap: 20px;
 }
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.challengeSection {
+  margin-top: 30px;
+}
+
+.buttonGrid {
+  display: flex;
+  gap: 20px;
+  margin: 0 auto;
+}
+
+.challengeItems {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.progressActions,
+.resultActions,
+.chatActions {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
