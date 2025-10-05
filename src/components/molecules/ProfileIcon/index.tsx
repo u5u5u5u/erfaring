@@ -1,5 +1,5 @@
 import { getProfile } from "@/actions/profile";
-import Avatar from "@/components/Avatar";
+import Avatar from "@/components/atoms/Avatar";
 import { convertGrade } from "@/utils/convertGrade";
 import { User as UserIcon } from "lucide-react";
 import styles from "./index.module.css";

@@ -1,6 +1,6 @@
-import Button from "@/components/Button";
-import Chats from "@/components/ChatsList";
-import Quests from "@/components/QuestsList";
+import Button from "@/components/atoms/Button";
+import Chats from "@/components/organisms/ChatsList";
+import Quests from "@/components/organisms/QuestsList";
 import { convertGrade } from "@/utils/convertGrade";
 import { getUserProfile } from "@/utils/supabase/actions";
 import { BookOpen, Swords } from "lucide-react";

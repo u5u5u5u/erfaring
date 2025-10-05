@@ -1,9 +1,9 @@
-import Hashtag from "@/components/Hashtag";
-import OrangeButton from "@/components/OrangeButton";
-import Questditail from "@/components/Questditail";
+import Hashtag from "@/components/atoms/Hashtag";
+import OrangeButton from "@/components/atoms/OrangeButton";
+import QuestDetail from "@/components/molecules/QuestDetail";
 import { createClient } from "@/utils/supabase/server";
 import styles from "./page.module.css";
-import Status from "@/components/Status";
+import Status from "@/components/atoms/Status";
 import { getQuestData } from "./actions";
 
 interface QuestDetail {
@@ -49,11 +49,11 @@ export default async function QuestPage({ params }: QuestDetail) {
         )}
       </div>
       <div className={styles.questDetails}>
-        <Questditail
+        <QuestDetail
           title="このクエストのミッション"
           text={questData.description}
         />
-        {/* <Questditail title="達人からのヒント" text={""} /> */}
+        {/* <QuestDetail title="達人からのヒント" text={""} /> */}
       </div>
       <div className={styles.buttonContainer}>
         <OrangeButton

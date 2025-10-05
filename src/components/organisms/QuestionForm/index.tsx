@@ -1,6 +1,6 @@
 "use client";
 
-import OrangeButton from "@/components/OrangeButton";
+import OrangeButton from "@/components/atoms/OrangeButton";
 import { FileOutput } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";

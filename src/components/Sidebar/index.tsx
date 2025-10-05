@@ -1,5 +1,6 @@
 "use client";
 
+import Avatar from "@/components/atoms/Avatar";
 import {
   BookOpen,
   ChevronLeft,
@@ -9,11 +10,9 @@ import {
   User,
   UserRound,
 } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import styles from "./index.module.css";
-import Avatar from "@/components/Avatar";
 
 interface SidebarProps {
   isOpen: boolean;

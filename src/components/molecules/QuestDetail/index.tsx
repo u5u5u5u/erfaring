@@ -1,17 +1,17 @@
 import styles from "./index.module.css";
 
-interface QuestditailProps {
+interface QuestDetailProps {
   title: string;
   text: string;
 }
 
-const Questditail = ({ title, text }: QuestditailProps) => {
+const QuestDetail = ({ title, text }: QuestDetailProps) => {
   return (
-    <div className={styles.Questditail}>
+    <div className={styles.QuestDetail}>
       <div className={styles.title}>{title}</div>
       <p className={styles.text}>{text}</p>
     </div>
   );
 };
 
-export default Questditail;
+export default QuestDetail;

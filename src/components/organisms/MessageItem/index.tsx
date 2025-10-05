@@ -1,14 +1,14 @@
-import ChatIcon from "../ChatIcon";
-import ChatSpeechBubble from "../ChatSpeechBubble";
-import styles from "./index.module.css";
+import MessageBubble from "@/components/atoms/MessageBubble";
+import ChatIcon from "@/components/molecules/ChatIcon";
 import type { Message } from "@/types/question";
 import { formatDateTime } from "@/utils/formatDateTime";
+import styles from "./index.module.css";
 
-interface ChatItemProps {
+interface MessageItemProps {
   message: Message;
 }
 
-const ChatItem = ({ message }: ChatItemProps) => {
+const MessageItem = ({ message }: MessageItemProps) => {
   return (
     <div className={styles.chatItem}>
       <ChatIcon
@@ -23,7 +23,7 @@ const ChatItem = ({ message }: ChatItemProps) => {
             : "AIメンター"
         }
       />
-      <ChatSpeechBubble
+      <MessageBubble
         text={message.content}
         time={formatDateTime(message.created_at?.toLocaleString() || "")}
       />
@@ -31,4 +31,4 @@ const ChatItem = ({ message }: ChatItemProps) => {
   );
 };
 
-export default ChatItem;
+export default MessageItem;

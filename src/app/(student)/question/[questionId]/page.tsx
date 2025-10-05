@@ -1,7 +1,7 @@
-import styles from "./page.module.css";
-import ChatItem from "@/components/ChatItem";
-import MessageForm from "@/components/MessageForm";
+import MessageForm from "@/components/organisms/MessageForm";
+import MessageItem from "@/components/organisms/MessageItem";
 import { createClient } from "@/utils/supabase/server";
+import styles from "./page.module.css";
 
 interface ChatPageProps {
   params: Promise<{ questionId: string }>;
@@ -37,7 +37,7 @@ export default async function ChatPage({ params }: ChatPageProps) {
       <div className={styles.chatContainer}>
         {messagesData.map((message, index) => (
           <div key={message.id} className={styles.questionItem}>
-            <ChatItem message={messagesData[index]} />
+            <MessageItem message={messagesData[index]} />
           </div>
         ))}
       </div>

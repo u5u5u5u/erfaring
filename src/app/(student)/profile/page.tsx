@@ -1,8 +1,8 @@
-import AcquiredBadgeList from "@/components/AcquiredBadgeList";
-import AcquireNumber from "@/components/AcquireNumber";
-import ClearQuestList from "@/components/ClearQuestList";
-import ProfileIcon from "@/components/ProfileIcon";
-import SolvedChatList from "@/components/SolvedChatList";
+import AcquireNumber from "@/components/atoms/AcquireNumber";
+import ProfileIcon from "@/components/molecules/ProfileIcon";
+import AcquiredBadgeList from "@/components/organisms/AcquiredBadgeList";
+import ClearQuestList from "@/components/organisms/ClearQuestList";
+import SolvedChatList from "@/components/organisms/SolvedChatList";
 import styles from "./page.module.css";
 
 export default async function ProfilePage() {

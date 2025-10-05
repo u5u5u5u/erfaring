@@ -1,4 +1,4 @@
-import Avatar from "@/components/Avatar";
+import Avatar from "@/components/atoms/Avatar";
 import styles from "./index.module.css";
 
 interface ChatIconProps {

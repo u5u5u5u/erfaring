@@ -1,5 +1,5 @@
 import { getChatsData } from "@/actions/chat";
-import Quest from "@/components/Quest";
+import Quest from "@/components/molecules/Quest";
 import styles from "./index.module.css";
 
 const Chats = async ({ limit }: { limit?: number }) => {

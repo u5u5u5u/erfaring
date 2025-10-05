@@ -1,8 +1,9 @@
 "use client";
-import { Send, Loader2 } from "lucide-react";
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+
 import { createClient } from "@/utils/supabase/client";
+import { Loader2, Send } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 import styles from "./index.module.css";
 
 interface MessageFormProps {

@@ -9,7 +9,7 @@ interface BudgeProps {
   color?: string;
 }
 
-const Budge = ({ name, icon, color }: BudgeProps) => {
+const Badge = ({ name, icon, color }: BudgeProps) => {
   return (
     <div className={styles.budge}>
       <DynamicIcon name={icon} color={color} className={styles.icon} />
@@ -18,4 +18,4 @@ const Budge = ({ name, icon, color }: BudgeProps) => {
   );
 };
 
-export default Budge;
+export default Badge;

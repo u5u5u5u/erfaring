@@ -1,12 +1,12 @@
-import styles from "./index.module.css";
 import ReactMarkdown from "react-markdown";
+import styles from "./index.module.css";
 
-interface ChatSpeechBubbleProps {
+interface MessageBubbleProps {
   text?: string;
   time?: string;
 }
 
-const ChatSpeechBubble = ({ text, time }: ChatSpeechBubbleProps) => {
+const MessageBubble = ({ text, time }: MessageBubbleProps) => {
   return (
     <div className={styles.speechBubble}>
       <div>
@@ -17,4 +17,4 @@ const ChatSpeechBubble = ({ text, time }: ChatSpeechBubbleProps) => {
   );
 };
 
-export default ChatSpeechBubble;
+export default MessageBubble;

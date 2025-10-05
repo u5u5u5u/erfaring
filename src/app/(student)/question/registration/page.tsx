@@ -1,6 +1,6 @@
-import QuestionForm from "@/components/QuestionForm";
+import PageTitle from "@/components/atoms/PageTitle";
+import QuestionForm from "@/components/organisms/QuestionForm";
 import styles from "./page.module.css";
-import PageTitle from "@/components/PageTitle";
 
 export default function QuestionRegistrationPage() {
   return (

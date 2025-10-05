@@ -1,9 +1,9 @@
+import Status from "@/components/atoms/Status";
+import { formatDateTime } from "@/utils/formatDateTime";
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 import styles from "./index.module.css";
-import { formatDateTime } from "@/utils/formatDateTime";
-import Status from "@/components/Status";
 
 interface QuestProps {
   theme: React.ReactNode;

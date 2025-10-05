@@ -1,5 +1,5 @@
-import PageTitle from "@/components/PageTitle";
-import Quests from "@/components/QuestsList";
+import PageTitle from "@/components/atoms/PageTitle";
+import Quests from "@/components/organisms/QuestsList";
 import styles from "./page.module.css";
 
 export default async function QuestionPage() {

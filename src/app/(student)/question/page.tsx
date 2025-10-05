@@ -1,6 +1,6 @@
-import AddQuestionButton from "@/components/AddQuestionButton";
-import Chats from "@/components/ChatsList";
-import PageTitle from "@/components/PageTitle";
+import AddQuestionButton from "@/components/atoms/AddQuestionButton";
+import PageTitle from "@/components/atoms/PageTitle";
+import Chats from "@/components/organisms/ChatsList";
 import styles from "./page.module.css";
 
 export default async function QuestionPage() {

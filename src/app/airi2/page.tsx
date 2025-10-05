@@ -1,11 +1,11 @@
-import Button from "@/components/Button";
-import ChatIcon from "@/components/ChatIcon";
-import ChatSpeechBubble from "@/components/ChatSpeechBubble";
-import Hashtag from "@/components/Hashtag";
-import OrangeButton from "@/components/OrangeButton";
-import Quest from "@/components/Quest";
-import Questditail from "@/components/Questditail";
-import QuestionForm from "@/components/QuestionForm";
+import Button from "@/components/atoms/Button";
+import Hashtag from "@/components/atoms/Hashtag";
+import MessageBubble from "@/components/atoms/MessageBubble";
+import OrangeButton from "@/components/atoms/OrangeButton";
+import ChatIcon from "@/components/molecules/ChatIcon";
+import Quest from "@/components/molecules/Quest";
+import QuestDetail from "@/components/molecules/QuestDetail";
+import QuestionForm from "@/components/organisms/QuestionForm";
 import { Swords } from "lucide-react";
 import Image from "next/image";
 import styles from "./page.module.css";
@@ -26,16 +26,16 @@ export default function Home() {
         ></Quest>
         <ChatIcon icon="" name="airi"></ChatIcon>
 
-        <ChatSpeechBubble
+        <MessageBubble
           text="カブトムシを拾ってきたよ"
           time="2025年9月10日11:51"
-        ></ChatSpeechBubble>
+        ></MessageBubble>
 
         <OrangeButton text="このクエストに挑戦する"></OrangeButton>
-        <Questditail
+        <QuestDetail
           title="このクエストのミッション"
           text="地域の魅力を伝えるにはどんな写真を撮ったらいいか考えよう！"
-        ></Questditail>
+        ></QuestDetail>
 
         <QuestionForm></QuestionForm>
 
