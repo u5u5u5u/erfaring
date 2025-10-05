@@ -80,3 +80,30 @@ export async function getSolvedChatsData(limit?: number) {
 
   return solvedChatsData;
 }
+
+export async function insertChatWithQuest(questId: string) {
+  const supabase = await createClient();
+  const user = await getUser();
+
+  if (!user) {
+    return null;
+  }
+  const { data, error } = await supabase
+    .from("chats")
+    .insert([
+      {
+        user_id: user.id,
+        quest_id: questId,
+        is_solved: false,
+      },
+    ])
+    .select()
+    .single();
+
+  if (error) {
+    console.error("Error inserting chat:", error);
+    return null;
+  }
+
+  return data;
+}

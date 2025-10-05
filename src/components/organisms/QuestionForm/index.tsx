@@ -4,7 +4,7 @@ import OrangeButton from "@/components/atoms/OrangeButton";
 import { FileOutput } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { createClient } from "@/utils/supabase/client";
 import styles from "./index.module.css";
 
@@ -14,6 +14,7 @@ const QuestionForm = () => {
   const [title, setTitle] = useState("");
   const [file, setFile] = useState<File | null>(null);
   const router = useRouter();
+  const searchParams = useSearchParams();
   const supabase = createClient();
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -66,10 +67,14 @@ const QuestionForm = () => {
         imageUrl = publicUrl;
       }
 
+      // クエリパラメータからquestIdを取得
+      const questId = searchParams.get("questId");
+
       const data = {
         title: title,
         image_url: imageUrl,
         user_id: user.id,
+        ...(questId && { quest_id: questId }),
       };
 
       const { data: chatData, error } = await supabase
@@ -85,7 +90,6 @@ const QuestionForm = () => {
       if (chatData) {
         const chatId = chatData[0].id;
 
-        // ユーザーのメッセージを保存
         const { error: messageError } = await supabase.from("messages").insert({
           chat_id: chatId,
           content: title,
@@ -97,7 +101,6 @@ const QuestionForm = () => {
           throw messageError;
         }
 
-        // AIのレスポンスを取得
         const baseUrl =
           process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
         const response = await fetch(`${baseUrl}/api/chat`, {
@@ -114,7 +117,6 @@ const QuestionForm = () => {
         if (response.ok) {
           const aiResponse = await response.json();
 
-          // AIのメッセージを保存
           const { error: aiMessageError } = await supabase
             .from("messages")
             .insert({

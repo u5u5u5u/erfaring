@@ -27,7 +27,6 @@ const MessageForm = ({ chat_id, history }: MessageFormProps) => {
     setLoading(true);
 
     try {
-      // ユーザーメッセージをデータベースに保存
       const userMessageData = {
         chat_id: chat_id,
         role: "user",
@@ -43,7 +42,6 @@ const MessageForm = ({ chat_id, history }: MessageFormProps) => {
         throw userMessageError;
       }
 
-      // AIに送信
       const baseUrl =
         process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
       const response = await fetch(`${baseUrl}/api/chat`, {
