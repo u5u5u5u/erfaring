@@ -1,7 +1,7 @@
 "use server";
 
-import { createClient } from "@/utils/supabase/server";
 import { getUser } from "@/utils/supabase/actions";
+import { createClient } from "@/utils/supabase/server";
 
 export async function getQuestsData(limit?: number) {
   const supabase = await createClient();
@@ -103,4 +103,77 @@ export async function getClearQuestsData(limit?: number) {
   }
 
   return clearQuestsData;
+}
+
+export async function getQuestData(questId: string) {
+  const supabase = await createClient();
+
+  const { data: questData, error: questError } = await supabase
+    .from("quests")
+    .select("*, organization_id(name), quest_tags(tag_id(name))")
+    .eq("id", questId)
+    .single();
+
+  if (questError) {
+    console.error("Error fetching quest:", questError);
+  }
+
+  return questData;
+}
+
+export async function checkUserQuestParticipation(questId: string) {
+  const supabase = await createClient();
+  const user = await getUser();
+
+  if (!user) {
+    return null;
+  }
+
+  const { data, error } = await supabase
+    .from("quest_assignments")
+    .select("quest_id")
+    .eq("user_id", user.id)
+    .eq("quest_id", questId)
+    .single();
+
+  if (error && error.code !== "PGRST116") {
+    console.error("Error checking quest participation:", error);
+    return null;
+  }
+
+  return !!data;
+}
+
+export async function acceptQuest(questId: string) {
+  const supabase = await createClient();
+  const user = await getUser();
+
+  if (!user) {
+    return null;
+  }
+
+  const { error } = await supabase
+    .from("quest_assignments")
+    .insert({ user_id: user.id, quest_id: questId });
+
+  if (error) {
+    console.error("Error accepting quest:", error);
+    return null;
+  }
+}
+
+export async function submitMissionAnswer(questId: string, answer: string) {
+  const supabase = await createClient();
+  const user = await getUser();
+
+  if (!user) {
+    return null;
+  }
+
+  // TODO: ミッションの回答を保存するロジックを実装
+  console.log("Mission answer submitted:", {
+    questId,
+    answer,
+    userId: user.id,
+  });
 }

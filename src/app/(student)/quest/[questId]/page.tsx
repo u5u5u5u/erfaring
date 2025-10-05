@@ -1,36 +1,18 @@
+import { checkUserQuestParticipation, getQuestData } from "@/actions/quest";
 import Hashtag from "@/components/atoms/Hashtag";
-import OrangeButton from "@/components/atoms/OrangeButton";
-import QuestDetail from "@/components/molecules/QuestDetail";
-import { createClient } from "@/utils/supabase/server";
-import styles from "./page.module.css";
 import Status from "@/components/atoms/Status";
-import { getQuestData } from "./actions";
+import QuestDetail from "@/components/molecules/QuestDetail";
+import QuestActions from "../../../../components/template/QuestActions";
+import styles from "./page.module.css";
 
-interface QuestDetail {
+interface QuestPageProps {
   params: Promise<{ questId: string }>;
 }
 
-export default async function QuestPage({ params }: QuestDetail) {
+export default async function QuestPage({ params }: QuestPageProps) {
   const { questId } = await params;
   const questData = await getQuestData(questId);
-
-  const handleQuestAccept = async () => {
-    "use server";
-    const supabase = await createClient();
-    const {
-      data: { user },
-    } = await supabase.auth.getUser();
-
-    if (user) {
-      const { error } = await supabase
-        .from("quest_assignments")
-        .insert({ user_id: user.id, quest_id: questId });
-
-      if (error) {
-        console.error("Error accepting quest:", error);
-      }
-    }
-  };
+  const isParticipating = await checkUserQuestParticipation(questId);
 
   return (
     <div className={styles.container}>
@@ -53,14 +35,11 @@ export default async function QuestPage({ params }: QuestDetail) {
           title="このクエストのミッション"
           text={questData.description}
         />
-        {/* <QuestDetail title="達人からのヒント" text={""} /> */}
       </div>
-      <div className={styles.buttonContainer}>
-        <OrangeButton
-          text="このクエストに挑戦する"
-          onClick={handleQuestAccept}
-        />
-      </div>
+      <QuestActions
+        questId={questId}
+        isParticipating={isParticipating || false}
+      />
     </div>
   );
 }
