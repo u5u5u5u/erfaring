@@ -1,13 +1,36 @@
-import React from "react";
+"use client";
+
+import { getQuestHints } from "@/actions/quest";
+import { useEffect, useState } from "react";
 import styles from "./index.module.css";
 
 interface HintModalProps {
   isOpen: boolean;
   onClose: () => void;
-  hint: string;
+  questId: string;
 }
 
-const HintModal = ({ isOpen, onClose, hint }: HintModalProps) => {
+const HintModal = ({ isOpen, onClose, questId }: HintModalProps) => {
+  const [hint, setHint] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchHint = async () => {
+      try {
+        const hints = await getQuestHints(questId);
+        if (hints && hints.length > 0) {
+          setHint(hints[0].content);
+        } else {
+          setHint("ヒントはまだ準備されていません。");
+        }
+      } catch (error) {
+        console.error("Error fetching hints:", error);
+        setHint("ヒントの取得中にエラーが発生しました。");
+      }
+    };
+
+    fetchHint();
+  }, [questId]);
+
   if (!isOpen) return null;
 
   return (

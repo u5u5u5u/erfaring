@@ -177,3 +177,20 @@ export async function submitMissionAnswer(questId: string, answer: string) {
     userId: user.id,
   });
 }
+
+export async function getQuestHints(questId: string) {
+  const supabase = await createClient();
+
+  const { data: hintsData, error: hintsError } = await supabase
+    .from("quest_hints")
+    .select("*")
+    .eq("quest_id", questId)
+    .order("created_at", { ascending: true });
+
+  if (hintsError) {
+    console.error("Error fetching quest hints:", hintsError);
+    return null;
+  }
+
+  return hintsData;
+}

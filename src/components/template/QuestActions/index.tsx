@@ -78,7 +78,7 @@ const QuestActions = ({ questId, isParticipating }: QuestActionsProps) => {
       <HintModal
         isOpen={showHint}
         onClose={() => setShowHint(false)}
-        hint="このクエストを攻略するためのヒントがここに表示されます。"
+        questId={questId}
       />
 
       <MissionForm

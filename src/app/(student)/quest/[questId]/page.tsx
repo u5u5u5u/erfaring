@@ -2,7 +2,7 @@ import { checkUserQuestParticipation, getQuestData } from "@/actions/quest";
 import Hashtag from "@/components/atoms/Hashtag";
 import Status from "@/components/atoms/Status";
 import QuestDetail from "@/components/molecules/QuestDetail";
-import QuestActions from "../../../../components/template/QuestActions";
+import QuestActions from "@/components/template/QuestActions";
 import styles from "./page.module.css";
 
 interface QuestPageProps {
