@@ -1,11 +1,22 @@
+import { getAcquireBadgeCount } from "@/actions/badge";
+import { getSolvedChatsCount } from "@/actions/chat";
+import { getClearQuestsCount } from "@/actions/quest";
 import styles from "./index.module.css";
 
 interface AcquireNumberProps {
   name: "quest" | "question" | "budge";
-  number: number;
 }
 
-const AcquireNumber = ({ name, number }: AcquireNumberProps) => {
+const AcquireNumber = async ({ name }: AcquireNumberProps) => {
+  const number =
+    name === "quest"
+      ? await getClearQuestsCount()
+      : name === "question"
+      ? await getSolvedChatsCount()
+      : name === "budge"
+      ? await getAcquireBadgeCount()
+      : 0;
+
   return (
     <div className={styles.acquireNumber}>
       <p className={styles.name}>

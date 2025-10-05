@@ -1,23 +1,9 @@
 import AddQuestionButton from "@/components/AddQuestionButton";
+import Chats from "@/components/ChatsList";
 import PageTitle from "@/components/PageTitle";
-import Quest from "@/components/Quest";
-import { createClient } from "@/utils/supabase/server";
 import styles from "./page.module.css";
 
 export default async function QuestionPage() {
-  const supabase = await createClient();
-
-  const { data } = await supabase.auth.getUser();
-
-  const { data: chatsData, error: chatsError } = await supabase
-    .from("chats")
-    .select("*")
-    .eq("user_id", data?.user?.id)
-    .order("created_at", { ascending: false });
-
-  if (chatsError) {
-    console.error("Error fetching chats:", chatsError);
-  }
 
   return (
     <div className={styles.container}>
@@ -26,18 +12,7 @@ export default async function QuestionPage() {
         <AddQuestionButton />
       </div>
       <div>
-        <ul className={styles.questionList}>
-          {chatsData?.map((chat) => (
-            <li key={chat.id} className={styles.chatItem}>
-              <Quest
-                type="question"
-                theme={chat.title}
-                people={chat.created_at}
-                link={`/question/${chat.id}`}
-              />
-            </li>
-          ))}
-        </ul>
+        <Chats />
       </div>
     </div>
   );

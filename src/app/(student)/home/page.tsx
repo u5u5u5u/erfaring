@@ -1,15 +1,13 @@
 import Button from "@/components/Button";
-import Quest from "@/components/Quest";
+import Chats from "@/components/ChatsList";
+import Quests from "@/components/QuestsList";
 import { convertGrade } from "@/utils/convertGrade";
 import { getUserProfile } from "@/utils/supabase/actions";
 import { BookOpen, Swords } from "lucide-react";
-import { getChatsData, getQuestsData } from "./actions";
 import styles from "./page.module.css";
 
 export default async function HomePage() {
   const userData = await getUserProfile();
-  const chatsData = await getChatsData();
-  const questsData = await getQuestsData();
 
   return (
     <div className={styles.container}>
@@ -34,37 +32,11 @@ export default async function HomePage() {
       </div>
       <div className={`${styles.section} ${styles.questSection}`}>
         <h2>参加中のクエスト</h2>
-        <ul>
-          {questsData?.map(
-            (quest) =>
-              quest.quest_id && (
-                <li key={quest.quest_id.id}>
-                  <Quest
-                    type="quest"
-                    theme={quest.quest_id.title}
-                    people={quest.quest_id.organization_id.name}
-                    link={`/quest/${quest.quest_id.id}`}
-                    status={quest.quest_id.status}
-                  />
-                </li>
-              )
-          )}
-        </ul>
+        <Quests limit={3}/>
       </div>
       <div className={`${styles.section} ${styles.questionSection}`}>
         <h2>最近の問い</h2>
-        <ul>
-          {chatsData?.map((chat) => (
-            <li key={chat.id}>
-              <Quest
-                type="question"
-                theme={chat.title}
-                people={chat.created_at}
-                link={`/question/${chat.id}`}
-              />
-            </li>
-          ))}
-        </ul>
+        <Chats limit={3} />
       </div>
     </div>
   );
