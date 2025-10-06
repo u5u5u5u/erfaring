@@ -28,7 +28,7 @@
 }
 
 .schoolSkeleton {
-  width: 250px;
+  width: 180px;
   height: 20px;
   background: #dee2e6;
   border-radius: 4px;
@@ -63,8 +63,8 @@
 }
 
 .numberSkeleton {
-  width: 60px;
-  height: 40px;
+  width: 100px;
+  height: 100px;
   background: #dee2e6;
   border-radius: 8px;
   animation: pulse 1.5s ease-in-out infinite;
@@ -80,9 +80,9 @@
 }
 
 .badgeSkeleton {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  border-radius: 8px;
   background: #dee2e6;
   animation: pulse 1.5s ease-in-out infinite;
 }

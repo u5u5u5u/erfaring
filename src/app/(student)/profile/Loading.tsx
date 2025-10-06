@@ -14,8 +14,6 @@ export const ProfileIconLoading = () => {
 
 export const AcquireNumbersLoading = () => {
   return (
-    <>
-      <p className={styles.title}>これまでの記録</p>
       <div className={styles.items}>
         {Array.from({ length: 3 }).map((_, index) => (
           <div key={index} className={styles.acquireNumberSkeleton}>
@@ -24,7 +22,6 @@ export const AcquireNumbersLoading = () => {
           </div>
         ))}
       </div>
-    </>
   );
 };
 
@@ -33,7 +30,7 @@ export const BadgeListLoading = () => {
     <>
       <p className={styles.title}>獲得したバッジ</p>
       <ul className={styles.badgeList}>
-        {Array.from({ length: 5 }).map((_, index) => (
+        {Array.from({ length: 3 }).map((_, index) => (
           <li key={index} className={styles.badgeSkeleton}></li>
         ))}
       </ul>

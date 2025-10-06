@@ -21,8 +21,8 @@ export default async function ProfilePage() {
       </Suspense>
       <div className={styles.sections}>
         <div className={styles.section}>
+          <p className={styles.title}>これまでの記録</p>
           <Suspense fallback={<AcquireNumbersLoading />}>
-            <p className={styles.title}>これまでの記録</p>
             <div className={styles.items}>
               <AcquireNumber name="quest" />
               <AcquireNumber name="question" />
