@@ -1,0 +1,114 @@
+/* Header Skeleton */
+.header {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 2rem;
+}
+
+.headerContent {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 1.5rem;
+}
+
+.titleSkeleton {
+  height: 56px;
+  width: 450px;
+  background: #dee2e6;
+  border-radius: 8px;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.statusSkeleton {
+  height: 36px;
+  width: 100px;
+  background: #dee2e6;
+  border-radius: 18px;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.organizationSkeleton {
+  height: 24px;
+  width: 200px;
+  background: #dee2e6;
+  border-radius: 4px;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Hashtags Skeleton */
+.hashtags {
+  display: flex;
+  gap: 10px;
+}
+
+.hashtagSkeleton {
+  height: 32px;
+  width: 120px;
+  background: #dee2e6;
+  border-radius: 16px;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Quest Details Skeleton */
+.questDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.detailCard {
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 24px;
+  border: 1px solid #e9ecef;
+}
+
+.detailTitleSkeleton {
+  height: 28px;
+  width: 250px;
+  background: #dee2e6;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.detailContent {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.textLine {
+  height: 18px;
+  background: #dee2e6;
+  border-radius: 4px;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Action Buttons Skeleton */
+.buttonGrid {
+  display: flex;
+  gap: 20px;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+.buttonSkeleton {
+  height: 50px;
+  width: 200px;
+  background: #dee2e6;
+  border-radius: 25px;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
