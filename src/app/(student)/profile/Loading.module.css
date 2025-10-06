@@ -1,0 +1,134 @@
+/* Profile Icon Skeleton */
+.profileIcon {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.avatarSkeleton {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: #dee2e6;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.information {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.nameSkeleton {
+  width: 180px;
+  height: 28px;
+  background: #dee2e6;
+  border-radius: 4px;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.schoolSkeleton {
+  width: 180px;
+  height: 20px;
+  background: #dee2e6;
+  border-radius: 4px;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Acquire Numbers Skeleton */
+.title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 2.5rem;
+}
+
+.items {
+  display: flex;
+  justify-content: space-around;
+}
+
+.acquireNumberSkeleton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.labelSkeleton {
+  width: 100px;
+  height: 18px;
+  background: #dee2e6;
+  border-radius: 4px;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.numberSkeleton {
+  width: 100px;
+  height: 100px;
+  background: #dee2e6;
+  border-radius: 8px;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Badge List Skeleton */
+.badgeList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  list-style: none;
+  padding: 0;
+}
+
+.badgeSkeleton {
+  width: 120px;
+  height: 120px;
+  border-radius: 8px;
+  background: #dee2e6;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Quest List Skeleton */
+.questList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  list-style: none;
+  padding: 0;
+}
+
+.questItemSkeleton {
+  width: 100%;
+  height: 24px;
+  background: #dee2e6;
+  border-radius: 4px;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Chat List Skeleton */
+.chatList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  list-style: none;
+  padding: 0;
+}
+
+.chatItemSkeleton {
+  width: 100%;
+  height: 24px;
+  background: #dee2e6;
+  border-radius: 4px;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}

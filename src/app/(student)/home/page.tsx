@@ -1,9 +1,12 @@
 import Button from "@/components/atoms/Button";
 import Chats from "@/components/organisms/ChatsList";
+import ChatsListLoading from "@/components/organisms/ChatsList/Loading";
 import Quests from "@/components/organisms/QuestsList";
+import QuestsListLoading from "@/components/organisms/QuestsList/Loading";
 import { convertGrade } from "@/utils/convertGrade";
 import { getUserProfile } from "@/utils/supabase/actions";
 import { BookOpen, Swords } from "lucide-react";
+import { Suspense } from "react";
 import styles from "./page.module.css";
 
 export default async function HomePage() {
@@ -32,11 +35,15 @@ export default async function HomePage() {
       </div>
       <div className={`${styles.section} ${styles.questSection}`}>
         <h2>参加中のクエスト</h2>
-        <Quests limit={3}/>
+        <Suspense fallback={<QuestsListLoading />}>
+          <Quests limit={3} assigned />
+        </Suspense>
       </div>
       <div className={`${styles.section} ${styles.questionSection}`}>
         <h2>最近の問い</h2>
-        <Chats limit={3} />
+        <Suspense fallback={<ChatsListLoading />}>
+          <Chats limit={3} />
+        </Suspense>
       </div>
     </div>
   );
