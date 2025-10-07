@@ -1,7 +1,7 @@
 import MessageItem from "@/components/organisms/MessageItem";
 import type { Message } from "@/types/question";
 import { createClient } from "@/utils/supabase/server";
-import styles from "./page.module.css";
+import styles from "./index.module.css";
 
 interface MessageListProps {
   questionId: string;
@@ -55,28 +55,4 @@ export const MessageList = async ({ questionId }: MessageListProps) => {
       </div>
     </>
   );
-};
-
-export const getMessageHistory = async (questionId: string) => {
-  const supabase = await createClient();
-
-  const { data: messagesData, error: messagesError } = await supabase
-    .from("messages")
-    .select("role, content")
-    .eq("chat_id", questionId)
-    .order("created_at", { ascending: true });
-
-  if (messagesError) {
-    console.error("Error fetching messages:", messagesError);
-    return [];
-  }
-
-  return messagesData.map((message) => ({
-    role: message.role,
-    parts: [
-      {
-        text: message.content,
-      },
-    ],
-  }));
 };

@@ -1,7 +1,8 @@
+import { getMessageHistory } from "@/actions/message";
 import MessageForm from "@/components/organisms/MessageForm";
+import { MessageList } from "@/components/organisms/MessageList";
 import { Suspense } from "react";
 import { MessageListLoading } from "./Loading";
-import { MessageList, getMessageHistory } from "./MessageList";
 import styles from "./page.module.css";
 
 interface ChatPageProps {
@@ -11,7 +12,6 @@ interface ChatPageProps {
 export default async function ChatPage({ params }: ChatPageProps) {
   const { questionId } = await params;
 
-  // メッセージ履歴を取得（フォーム用）
   const history = await getMessageHistory(questionId);
 
   return (
