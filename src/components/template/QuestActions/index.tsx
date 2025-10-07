@@ -68,7 +68,7 @@ const QuestActions = ({ questId, isParticipating }: QuestActionsProps) => {
           探求ノートを追加
         </button>
         <button className={styles.actionButton} onClick={handleShowHint}>
-          ヒントを見る
+          達人からのヒントを見る
         </button>
         <button className={styles.actionButton} onClick={handleShowMission}>
           ミッションに挑む

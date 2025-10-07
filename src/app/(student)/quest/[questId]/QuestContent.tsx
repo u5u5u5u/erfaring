@@ -10,9 +10,6 @@ interface QuestContentProps {
 }
 
 export const QuestContent = async ({ questId }: QuestContentProps) => {
-  // デモ用の遅延（本番では削除してください）
-  await new Promise((resolve) => setTimeout(resolve, 800));
-
   const questData = await getQuestData(questId);
   const isParticipating = await checkUserQuestParticipation(questId);
 
