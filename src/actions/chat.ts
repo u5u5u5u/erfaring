@@ -107,3 +107,21 @@ export async function insertChatWithQuest(questId: string) {
 
   return data;
 }
+
+export async function solvedChat(chatId: string) {
+  const supabase = await createClient();
+
+  const { data, error } = await supabase
+    .from("chats")
+    .update({ is_solved: true })
+    .eq("id", chatId)
+    .select()
+    .single();
+
+  if (error) {
+    console.error("Error updating chat to solved:", error);
+    return null;
+  }
+
+  return data;
+}
