@@ -4,17 +4,16 @@ import Status from "@/components/atoms/Status";
 import QuestDetail from "@/components/molecules/QuestDetail";
 import QuestActions from "@/components/template/QuestActions";
 import styles from "./page.module.css";
+import { getUser } from "@/utils/supabase/actions";
 
 interface QuestContentProps {
   questId: string;
 }
 
 export const QuestContent = async ({ questId }: QuestContentProps) => {
-  // デモ用の遅延（本番では削除してください）
-  await new Promise((resolve) => setTimeout(resolve, 800));
-
   const questData = await getQuestData(questId);
   const isParticipating = await checkUserQuestParticipation(questId);
+  const user = await getUser();
 
   return (
     <>
@@ -40,6 +39,7 @@ export const QuestContent = async ({ questId }: QuestContentProps) => {
       </div>
       <QuestActions
         questId={questId}
+        userId={user?.id || ""}
         isParticipating={isParticipating || false}
       />
     </>

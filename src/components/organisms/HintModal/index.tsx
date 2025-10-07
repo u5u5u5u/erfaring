@@ -8,15 +8,16 @@ interface HintModalProps {
   isOpen: boolean;
   onClose: () => void;
   questId: string;
+  userId: string;
 }
 
-const HintModal = ({ isOpen, onClose, questId }: HintModalProps) => {
+const HintModal = ({ isOpen, onClose, questId, userId }: HintModalProps) => {
   const [hint, setHint] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchHint = async () => {
       try {
-        const hints = await getQuestHints(questId);
+        const hints = await getQuestHints(questId, userId);
         if (hints && hints.length > 0) {
           setHint(hints[0].content);
         } else {

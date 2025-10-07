@@ -10,10 +10,15 @@ import styles from "./index.module.css";
 
 interface QuestActionsProps {
   questId: string;
+  userId: string;
   isParticipating: boolean;
 }
 
-const QuestActions = ({ questId, isParticipating }: QuestActionsProps) => {
+const QuestActions = ({
+  questId,
+  userId,
+  isParticipating,
+}: QuestActionsProps) => {
   const router = useRouter();
   const [showHint, setShowHint] = useState(false);
   const [showMissionForm, setShowMissionForm] = useState(false);
@@ -68,7 +73,7 @@ const QuestActions = ({ questId, isParticipating }: QuestActionsProps) => {
           探求ノートを追加
         </button>
         <button className={styles.actionButton} onClick={handleShowHint}>
-          ヒントを見る
+          達人からのヒントを見る
         </button>
         <button className={styles.actionButton} onClick={handleShowMission}>
           ミッションに挑む
@@ -79,6 +84,7 @@ const QuestActions = ({ questId, isParticipating }: QuestActionsProps) => {
         isOpen={showHint}
         onClose={() => setShowHint(false)}
         questId={questId}
+        userId={userId}
       />
 
       <MissionForm

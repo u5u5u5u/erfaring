@@ -4,13 +4,13 @@ import ChatsListLoading from "@/components/organisms/ChatsList/Loading";
 import Quests from "@/components/organisms/QuestsList";
 import QuestsListLoading from "@/components/organisms/QuestsList/Loading";
 import { convertGrade } from "@/utils/convertGrade";
-import { getUserProfile } from "@/utils/supabase/actions";
+import { getProfile } from "@/actions/profile";
 import { BookOpen, Swords } from "lucide-react";
 import { Suspense } from "react";
 import styles from "./page.module.css";
 
 export default async function HomePage() {
-  const userData = await getUserProfile();
+  const userData = await getProfile();
 
   return (
     <div className={styles.container}>
