@@ -1,0 +1,21 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 2rem;
+  gap: 20px;
+}
+
+.title {
+  font-size: 3.5rem;
+  margin: 0;
+}
+
+.chatContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow-y: auto;
+  padding-bottom: 100px; 
+}
