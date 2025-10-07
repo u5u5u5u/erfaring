@@ -178,13 +178,14 @@ export async function submitMissionAnswer(questId: string, answer: string) {
   });
 }
 
-export async function getQuestHints(questId: string) {
+export async function getQuestHints(questId: string, userId: string) {
   const supabase = await createClient();
 
   const { data: hintsData, error: hintsError } = await supabase
     .from("quest_hints")
     .select("*")
     .eq("quest_id", questId)
+    .eq("user_id", userId)
     .order("created_at", { ascending: true });
 
   if (hintsError) {
