@@ -107,3 +107,32 @@ export async function insertChatWithQuest(questId: string) {
 
   return data;
 }
+
+export async function toggleChatSolved(chatId: string) {
+  const supabase = await createClient();
+
+  const { data: currentChat, error: fetchError } = await supabase
+    .from("chats")
+    .select("is_solved")
+    .eq("id", chatId)
+    .single();
+
+  if (fetchError) {
+    console.error("Error fetching chat:", fetchError);
+    return null;
+  }
+
+  const { data, error } = await supabase
+    .from("chats")
+    .update({ is_solved: !currentChat.is_solved })
+    .eq("id", chatId)
+    .select()
+    .single();
+
+  if (error) {
+    console.error("Error toggling chat solved status:", error);
+    return null;
+  }
+
+  return data;
+}
