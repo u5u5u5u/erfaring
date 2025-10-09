@@ -22,7 +22,7 @@ export default function CareerButton({ chatId, isSolved }: CareerButtonProps) {
         className={styles.careerButton}
         onClick={() => setIsModalOpen(true)}
       >
-        💼 キャリアを見る
+        キャリアを見る
       </button>
       <CareerModal
         chatId={chatId}
