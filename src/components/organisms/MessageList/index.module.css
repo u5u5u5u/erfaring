@@ -7,6 +7,12 @@
   gap: 20px;
 }
 
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
 .title {
   font-size: 3.5rem;
   margin: 0;
@@ -17,5 +23,5 @@
   flex-direction: column;
   gap: 20px;
   overflow-y: auto;
-  padding-bottom: 100px; 
+  padding-bottom: 100px;
 }

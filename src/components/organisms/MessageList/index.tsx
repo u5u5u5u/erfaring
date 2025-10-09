@@ -1,5 +1,6 @@
 import { getMessagesData } from "@/actions/message";
 import { SolvedSwitch } from "@/components/molecules/SolvedSwitch";
+import CareerButton from "@/components/molecules/CareerButton";
 import MessageItem from "@/components/organisms/MessageItem";
 import type { Message } from "@/types/question";
 import styles from "./index.module.css";
@@ -15,10 +16,16 @@ export const MessageList = async ({ questionId }: MessageListProps) => {
     <>
       <div className={styles.header}>
         <h1 className={styles.title}>{messagesData?.[0].chat_id.title}</h1>
-        <SolvedSwitch
-          questionId={questionId}
-          initialChecked={messagesData?.[0].chat_id.is_solved}
-        />
+        <div className={styles.controls}>
+          <SolvedSwitch
+            questionId={questionId}
+            initialChecked={messagesData?.[0].chat_id.is_solved}
+          />
+          <CareerButton
+            chatId={questionId}
+            isSolved={messagesData?.[0].chat_id.is_solved || false}
+          />
+        </div>
       </div>
       <div className={styles.chatContainer}>
         {messagesData?.map((message) => (
