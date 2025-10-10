@@ -1,28 +1,41 @@
 .orange {
-  width: 20rem;
-  height: 5rem;
-  background-color: orange;
+  min-width: 240px;
+  height: 56px;
+  background: orange;
   border: none;
-  border-radius: 2.5rem;
+  border-radius: 28px;
   color: white;
-  font-weight: bold;
+  font-weight: 600;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+  padding: 0 32px;
+  letter-spacing: 0.5px;
+}
+
+.orange:hover:not(.disabled) {
+  box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+  background: #fc754c;
+}
+
+.orange:active:not(.disabled) {
+  box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3);
 }
 
 .orange.disabled {
-  background-color: #cccccc;
+  background: #e0e0e0;
   cursor: not-allowed;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .loadingContainer {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 8px;
 }
 
 .spinner {
@@ -30,7 +43,7 @@
 }
 
 .loadingText {
-  font-size: 1.5rem;
+  font-size: 16px;
 }
 
 @keyframes spin {
