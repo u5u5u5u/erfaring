@@ -13,9 +13,9 @@ const Status = ({ status }: StatusProps) => {
   };
   const statusColors = {
     draft: "#6c757d", // Gray
-    open: "#28a745", // Green
-    closed: "#dc3545", // Red
-    archived: "#007bff", // Blue
+    open: "#10b981", // Modern Green
+    closed: "#ef4444", // Modern Red
+    archived: "#3b82f6", // Modern Blue
   };
 
   return (
