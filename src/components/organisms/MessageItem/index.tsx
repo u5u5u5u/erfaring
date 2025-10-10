@@ -26,6 +26,7 @@ const MessageItem = ({ message }: MessageItemProps) => {
       <MessageBubble
         text={message.content}
         time={formatDateTime(message.created_at?.toLocaleString() || "")}
+        isMine={message.role === "user"}
       />
     </div>
   );

@@ -17,13 +17,13 @@ export const QuestContent = async ({ questId }: QuestContentProps) => {
 
   return (
     <>
-      <div className={styles.header}>
-        <h1>
-          {questData.title}
+      <header className={styles.header}>
+        <div className={styles.titleContainer}>
+          <h1 className={styles.title}>{questData.title}</h1>
           <Status status={questData.status} />
-        </h1>
-        <p>{questData.organization_id.name}</p>
-      </div>
+        </div>
+        <p className={styles.organization}>{questData.organization_id.name}</p>
+      </header>
       <div className={styles.hashtags}>
         {questData.quest_tags.map(
           (tag: { tag_id: { name: string } }, index: number) => (
@@ -31,12 +31,12 @@ export const QuestContent = async ({ questId }: QuestContentProps) => {
           )
         )}
       </div>
-      <div className={styles.questDetails}>
+      <section className={styles.questDetails}>
         <QuestDetail
           title="このクエストのミッション"
           text={questData.description}
         />
-      </div>
+      </section>
       <QuestActions
         questId={questId}
         userId={user?.id || ""}

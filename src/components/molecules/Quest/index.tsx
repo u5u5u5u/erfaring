@@ -16,21 +16,22 @@ interface QuestProps {
 
 const Quest = ({ color, theme, people, link, type, status }: QuestProps) => {
   return (
-    <div className={styles.quest} style={{ backgroundColor: color }}>
-      <div className={styles.information}>
-        <div className={styles.infoHead}>
-          <h1 className={styles.theme}>{theme}</h1>
-          {type === "quest" && <Status status={status} />}
+    <Link href={link} className={styles.questLink}>
+      <div className={styles.quest} style={{ borderLeftColor: color }}>
+        <div className={styles.information}>
+          <div className={styles.infoHead}>
+            <h1 className={styles.theme}>{theme}</h1>
+            {type === "quest" && <Status status={status} />}
+          </div>
+          <div className={styles.people}>
+            {type === "question" ? formatDateTime(people) : people}
+          </div>
         </div>
-        <div className={styles.people}>
-          {type === "question" ? formatDateTime(people) : people}
+        <div className={styles.details}>
+          <ChevronRight className={styles.arrow} size={25}></ChevronRight>
         </div>
       </div>
-      <Link className={styles.link} href={link}>
-        詳しく見る
-        <ChevronRight className={styles.arrow} size={25}></ChevronRight>
-      </Link>
-    </div>
+    </Link>
   );
 };
 

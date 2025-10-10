@@ -1,38 +1,60 @@
 .quest {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  height: 100px;
-  width: 100%;
-  max-width: 840px;
-  border-radius: 15px;
-  border: gray solid;
-  padding: 0 40px;
+  align-items: center;
+  padding: 3rem;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: background-color 0.2s;
+}
+
+.questLink {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.questLink:hover {
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+}
+
+.information {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex-grow: 1;
 }
 
 .infoHead {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 1rem;
 }
 
 .theme {
   font-size: 2rem;
-  font-weight: bold;
-  color: black;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.4;
 }
 
 .people {
   font-size: 1.5rem;
-  color: gray;
-  padding-top: 10px;
+  color: #555;
 }
 
-.link {
-  color: blue;
-  text-align: right;
+.details {
   display: flex;
   align-items: center;
-  font-size: 1.5rem;
 }
 
+.arrow {
+  color: #aaa;
+  transition: color 0.2s;
+}
+
+.questLink:hover .arrow {
+  color: #333;
+}
