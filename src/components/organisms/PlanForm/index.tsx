@@ -55,7 +55,7 @@ const PlanForm = ({ isOpen, onClose, onSubmit }: PlanFormProps) => {
               onChange={(e) => setPlan(e.target.value)}
               placeholder="ミッション解決のためのプランを入力してください..."
               className={styles.textarea}
-              rows={10}
+              rows={12}
               disabled={isSubmitting}
             />
           </div>

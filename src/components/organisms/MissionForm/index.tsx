@@ -46,7 +46,7 @@ const MissionForm: React.FC<MissionFormProps> = ({
                 onChange={(e) => setAnswer(e.target.value)}
                 className={styles.textarea}
                 placeholder="ここに解決策を入力してください..."
-                rows={8}
+                rows={12}
                 required
               />
             </div>
