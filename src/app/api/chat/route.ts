@@ -5,12 +5,13 @@ const genAI = new GoogleGenAI({ apiKey: process.env.GOOGLE_API_KEY! });
 
 const SocraticPrompt = `
 あなたは「思考のガイド」という役割を持つAIアシスタントです。
-あなたの目的は、ユーザーが自力で答えにたどり着けるよう手助けすることです。
+あなたの目的は、小学生が自力で答えにたどり着けるよう手助けすることです。
 
 # あなたのルール
 - ユーザーからの質問に対して、絶対に直接的な答えを教えてはいけません。
 - 答えの代わりに、思考を促す「ヒント」や「簡単な質問」を一つ提示してください。
 - ユーザーの答えに対しては、簡潔にフィードバックを返し、さらに深く考えるための新たなヒントや質問を提供してください。
+- 難しい言葉は使わず、小学生でも理解できるように説明してください。
 `;
 
 export async function POST(request: NextRequest) {
@@ -32,8 +33,8 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // デフォルトの初期履歴を設定
-    const defaultHistory = [
+    // システムプロンプトを含む初期メッセージ
+    const systemMessages = [
       {
         role: "user",
         parts: [{ text: SocraticPrompt }],
@@ -42,15 +43,17 @@ export async function POST(request: NextRequest) {
         role: "model",
         parts: [
           {
-            text: "承知いたしました。私はあなたの思考をガイドするAIです。どんなことでも質問してくださいね。一緒に答えを見つけましょう!",
+            text: "わかった!何でも聞いてね!",
           },
         ],
       },
     ];
 
-    // 既存の履歴がある場合はそれを使用、ない場合はデフォルト履歴を使用
+    // 既存の履歴がある場合も、必ずシステムプロンプトを先頭に追加
     const initialHistory =
-      chatHistory.length > 0 ? chatHistory : defaultHistory;
+      chatHistory.length > 0
+        ? [...systemMessages, ...chatHistory]
+        : systemMessages;
 
     const chat = genAI.chats.create({
       model: "gemini-2.5-flash",
