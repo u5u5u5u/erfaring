@@ -13,19 +13,21 @@
 
 .modalContent {
   background-color: white;
-  padding: 2rem;
-  border-radius: 12px;
-  max-width: 600px;
+  padding: 2.5rem;
+  border-radius: 16px;
+  max-width: 700px;
   width: 90%;
-  max-height: 80vh;
+  max-height: 85vh;
   overflow-y: auto;
   position: relative;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
 .closeButton {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
+  top: 1.25rem;
+  right: 1.25rem;
   background: none;
   border: none;
   cursor: pointer;
@@ -34,51 +36,81 @@
   align-items: center;
   justify-content: center;
   transition: color 0.2s ease;
+  padding: 0.5rem;
+  border-radius: 8px;
 }
 
 .closeButton:hover {
   color: #1f2937; /* gray-800 */
+  background-color: #f3f4f6; /* gray-100 */
 }
 
 .title {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-bottom: 1.5rem;
-  color: #374151; /* gray-700 */
+  font-size: 1.875rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  margin-top: 0.5rem;
+  color: #1f2937; /* gray-800 */
   text-align: center;
+  letter-spacing: -0.025em;
 }
 
 .careerName {
-  font-size: 1.25rem;
-  font-weight: 600;
+  font-size: 1.75rem;
+  font-weight: 700;
   color: #ff7f50; /* Coral */
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 3px solid #ffe4d6;
+  line-height: 1.3;
 }
 
 .description {
-  font-size: 1rem;
-  line-height: 1.6;
-  color: #4b5563; /* gray-600 */
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: #374151; /* gray-700 */
   white-space: pre-wrap;
+  padding: 0.5rem 0;
 }
 
 .loading {
   text-align: center;
-  padding: 2rem;
+  padding: 3rem 2rem;
   color: #6b7280; /* gray-500 */
-  font-size: 1rem;
+  font-size: 1.125rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 1rem;
+}
+
+.loading p {
+  margin: 0;
+  font-weight: 500;
 }
 
 .error {
-  color: #ef4444; /* red-500 */
-  padding: 1rem;
+  color: #dc2626; /* red-600 */
+  padding: 1.25rem;
   background-color: #fef2f2; /* red-50 */
-  border-radius: 8px;
+  border-radius: 10px;
   margin-bottom: 1rem;
   text-align: center;
+  font-size: 1rem;
+  font-weight: 500;
+  border: 1px solid #fecaca; /* red-200 */
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
