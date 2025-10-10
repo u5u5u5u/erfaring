@@ -93,7 +93,7 @@ export default function CareerModal({
 
         {loading && (
           <div className={styles.loading}>
-            <Loader2 className="animate-spin" size={32} />
+            <Loader2 className={styles.spinner} size={32} />
             <p>キャリアを分析中...</p>
           </div>
         )}
