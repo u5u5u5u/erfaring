@@ -134,10 +134,6 @@ const QuestActions = ({
   return (
     <>
       <div className={styles.challengeSection}>
-        <button className={styles.actionButton} onClick={handleAddNote}>
-          探求ノートを追加
-        </button>
-
         {/* ステップ1: プランを提出 */}
         {!hasPlan && (
           <button className={styles.actionButton} onClick={handleShowPlanForm}>
@@ -145,11 +141,19 @@ const QuestActions = ({
           </button>
         )}
 
-        {/* ステップ2: プラン提出後、ヒント待ち */}
-        {hasPlan && !hasHints && (
-          <div className={styles.waitingMessage}>
-            プランを提出しました。達人からのヒントをお待ちください。
-          </div>
+        {/* ステップ2: プラン提出後、探求ノートと、ヒント待ちメッセージ */}
+        {hasPlan && (
+          <>
+            <button className={styles.actionButton} onClick={handleAddNote}>
+              探求ノートを追加
+            </button>
+
+            {!hasHints && (
+              <div className={styles.waitingMessage}>
+                プランを提出しました。達人からのヒントをお待ちください。
+              </div>
+            )}
+          </>
         )}
 
         {/* ステップ3: ヒントが来たら表示可能 */}
