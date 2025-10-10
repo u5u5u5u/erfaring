@@ -10,10 +10,10 @@
 }
 
 .mine {
-  background-color: #007aff;
-  color: white;
+  background-color: #e5e5ea;
+  color: black;
   align-self: flex-end;
-  border-bottom-right-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
 }
 
 .other {
@@ -43,7 +43,7 @@
 }
 
 .mine .time {
-  color: rgba(255, 255, 255, 0.8);
+  color: #6d6d72;
 }
 
 .other .time {
