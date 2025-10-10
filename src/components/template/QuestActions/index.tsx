@@ -2,17 +2,15 @@
 
 import {
   acceptQuest,
-  submitMissionAnswer,
   submitQuestPlan,
   getQuestHintsForUser,
-  submitProgressMemo,
+  submitFinalAnswer,
   getUserQuestSubmissions,
 } from "@/actions/quest";
 import OrangeButton from "@/components/atoms/OrangeButton";
 import HintModal from "@/components/organisms/HintModal";
 import MissionForm from "@/components/organisms/MissionForm";
 import PlanForm from "@/components/organisms/PlanForm";
-import ProgressMemoForm from "@/components/organisms/ProgressMemoForm";
 import { useRouter } from "next/navigation";
 import React, { useState, useEffect } from "react";
 import styles from "./index.module.css";
@@ -32,12 +30,9 @@ const QuestActions = ({
   const [showHint, setShowHint] = useState(false);
   const [showMissionForm, setShowMissionForm] = useState(false);
   const [showPlanForm, setShowPlanForm] = useState(false);
-  const [showProgressMemoForm, setShowProgressMemoForm] = useState(false);
-  const [hints, setHints] = useState<
-    Array<{ hint_content: string; created_at: string }>
-  >([]);
   const [hasPlan, setHasPlan] = useState(false);
   const [hasHints, setHasHints] = useState(false);
+  const [hasFinalAnswer, setHasFinalAnswer] = useState(false);
 
   // クエストの状態をチェック
   useEffect(() => {
@@ -48,13 +43,16 @@ const QuestActions = ({
       const submissions = await getUserQuestSubmissions(questId);
       if (submissions) {
         const planExists = submissions.some((sub) => sub.type === "plan");
+        const finalAnswerExists = submissions.some(
+          (sub) => sub.type === "final_answer"
+        );
         setHasPlan(planExists);
+        setHasFinalAnswer(finalAnswerExists);
       }
 
       // ヒントが存在するかチェック
       const hintsResult = await getQuestHintsForUser(questId);
       if (hintsResult.success && hintsResult.data) {
-        setHints(hintsResult.data);
         setHasHints(true);
       }
     };
@@ -88,19 +86,6 @@ const QuestActions = ({
     setShowPlanForm(true);
   };
 
-  const handleShowProgressMemoForm = async () => {
-    // 最新のヒントを取得
-    const hintsResult = await getQuestHintsForUser(questId);
-    if (hintsResult.success && hintsResult.data) {
-      setHints(hintsResult.data);
-      setShowProgressMemoForm(true);
-    } else {
-      alert(
-        "ヒントがまだ登録されていません。達人からのフィードバックをお待ちください。"
-      );
-    }
-  };
-
   const handleSubmitPlan = async (plan: string) => {
     try {
       const result = await submitQuestPlan(questId, plan);
@@ -117,28 +102,21 @@ const QuestActions = ({
     }
   };
 
-  const handleSubmitProgressMemo = async (memo: string) => {
-    try {
-      const result = await submitProgressMemo(questId, memo);
-      if (result.success) {
-        alert("意見を提出しました！");
-        router.refresh();
-      } else {
-        alert(result.error || "意見の提出に失敗しました");
-      }
-    } catch (error) {
-      console.error("意見提出エラー:", error);
-      throw error;
-    }
-  };
-
   const handleSubmitMission = async (answer: string) => {
     try {
-      await submitMissionAnswer(questId, answer);
-      alert("ミッションの回答を提出しました！");
+      const result = await submitFinalAnswer(questId, answer);
+      if (result.success) {
+        alert(
+          "ミッションクリアのための解決策を提出しました！企業からのフィードバックをお待ちください。"
+        );
+        setHasFinalAnswer(true);
+        router.refresh();
+      } else {
+        alert(result.error || "解決策の提出に失敗しました");
+      }
     } catch (error) {
-      console.error("ミッション提出エラー:", error);
-      return null;
+      console.error("解決策提出エラー:", error);
+      throw error;
     }
   };
 
@@ -159,45 +137,52 @@ const QuestActions = ({
         <button className={styles.actionButton} onClick={handleAddNote}>
           探求ノートを追加
         </button>
+
+        {/* ステップ1: プランを提出 */}
         {!hasPlan && (
           <button className={styles.actionButton} onClick={handleShowPlanForm}>
-            クエストクリアのプランを立てる
+            プランを提出する
           </button>
         )}
+
+        {/* ステップ2: プラン提出後、ヒント待ち */}
         {hasPlan && !hasHints && (
           <div className={styles.waitingMessage}>
             プランを提出しました。達人からのヒントをお待ちください。
           </div>
         )}
-        {hasHints && (
+
+        {/* ステップ3: ヒントが来たら表示可能 */}
+        {hasPlan && hasHints && (
           <>
             <button className={styles.actionButton} onClick={handleShowHint}>
               達人からのヒントを見る
             </button>
-            <button
-              className={styles.actionButton}
-              onClick={handleShowProgressMemoForm}
-            >
-              ミッションクリアのための意見を提出
-            </button>
+
+            {/* ステップ4: 解決策を提出 */}
+            {!hasFinalAnswer && (
+              <button
+                className={styles.actionButton}
+                onClick={handleShowMission}
+              >
+                ミッションクリアのための解決策を提出
+              </button>
+            )}
+
+            {/* ステップ5: フィードバック待ち */}
+            {hasFinalAnswer && (
+              <div className={styles.waitingMessage}>
+                解決策を提出しました。企業からのフィードバックをお待ちください。
+              </div>
+            )}
           </>
         )}
-        <button className={styles.actionButton} onClick={handleShowMission}>
-          ミッションに挑む
-        </button>
       </div>
 
       <PlanForm
         isOpen={showPlanForm}
         onClose={() => setShowPlanForm(false)}
         onSubmit={handleSubmitPlan}
-      />
-
-      <ProgressMemoForm
-        isOpen={showProgressMemoForm}
-        onClose={() => setShowProgressMemoForm(false)}
-        onSubmit={handleSubmitProgressMemo}
-        hints={hints}
       />
 
       <HintModal

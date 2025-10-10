@@ -39,7 +39,7 @@ const PlanForm = ({ isOpen, onClose, onSubmit }: PlanFormProps) => {
     <div className={styles.overlay} onClick={onClose}>
       <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
         <div className={styles.header}>
-          <h2>クエストクリアのプランを立てる</h2>
+          <h2>ミッション解決のためのプランを提出</h2>
           <button className={styles.closeButton} onClick={onClose}>
             ×
           </button>
@@ -47,13 +47,13 @@ const PlanForm = ({ isOpen, onClose, onSubmit }: PlanFormProps) => {
         <form onSubmit={handleSubmit} className={styles.form}>
           <div className={styles.formGroup}>
             <label htmlFor="plan">
-              どのようにクエストをクリアするか、プランを立ててください
+              ミッションを解決するためのプランを立ててください
             </label>
             <textarea
               id="plan"
               value={plan}
               onChange={(e) => setPlan(e.target.value)}
-              placeholder="クエストクリアのためのプランを入力してください..."
+              placeholder="ミッション解決のためのプランを入力してください..."
               className={styles.textarea}
               rows={10}
               disabled={isSubmitting}
