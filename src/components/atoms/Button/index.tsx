@@ -8,16 +8,19 @@ interface ButtonProps {
   color?: string;
   icon?: React.ReactNode;
   link: string;
+  className?: string;
 }
 
-const Button = ({ children, color, icon, link }: ButtonProps) => {
+const Button = ({ children, color, icon, link, className }: ButtonProps) => {
   return (
-    <Link className={styles.button} style={{ backgroundColor: color }} href={link}>
-      <div className={styles.icon}>{icon}</div>
-      <div className={styles.moji}>{children}</div>
-      <div className={styles.arrow}>
-        <ChevronRight size={30}></ChevronRight>
-      </div>
+    <Link
+      href={link}
+      className={`${styles.button} ${className}`}
+      style={{ "--button-color": color } as React.CSSProperties}
+    >
+      {icon && <div className={styles.icon}>{icon}</div>}
+      <span className={styles.text}>{children}</span>
+      <ChevronRight className={styles.arrow} size={24} />
     </Link>
   );
 };

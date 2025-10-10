@@ -7,8 +7,8 @@ interface QuestDetailProps {
 
 const QuestDetail = ({ title, text }: QuestDetailProps) => {
   return (
-    <div className={styles.QuestDetail}>
-      <div className={styles.title}>{title}</div>
+    <div className={styles.questDetail}>
+      <h2 className={styles.title}>{title}</h2>
       <p className={styles.text}>{text}</p>
     </div>
   );

@@ -4,12 +4,17 @@ import styles from "./index.module.css";
 interface MessageBubbleProps {
   text?: string;
   time?: string;
+  isMine: boolean;
 }
 
-const MessageBubble = ({ text, time }: MessageBubbleProps) => {
+const MessageBubble = ({ text, time, isMine }: MessageBubbleProps) => {
+  const bubbleClasses = `${styles.messageBubble} ${
+    isMine ? styles.mine : styles.other
+  }`;
+
   return (
-    <div className={styles.speechBubble}>
-      <div>
+    <div className={bubbleClasses}>
+      <div className={styles.content}>
         <ReactMarkdown>{text}</ReactMarkdown>
       </div>
       <p className={styles.time}>{time}</p>

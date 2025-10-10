@@ -29,7 +29,7 @@ const MissionForm: React.FC<MissionFormProps> = ({
     <div className={styles.overlay} onClick={onClose}>
       <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
         <div className={styles.header}>
-          <h2>ミッションに挑む</h2>
+          <h2>ミッションクリアのための解決策を提出</h2>
           <button className={styles.closeButton} onClick={onClose}>
             ×
           </button>
@@ -38,14 +38,14 @@ const MissionForm: React.FC<MissionFormProps> = ({
           <form onSubmit={handleSubmit}>
             <div className={styles.formGroup}>
               <label htmlFor="answer" className={styles.label}>
-                あなたの回答・取り組み内容を入力してください
+                ミッションクリアのための解決策を入力してください
               </label>
               <textarea
                 id="answer"
                 value={answer}
                 onChange={(e) => setAnswer(e.target.value)}
                 className={styles.textarea}
-                placeholder="ここに回答や取り組み内容を入力してください..."
+                placeholder="ここに解決策を入力してください..."
                 rows={8}
                 required
               />
